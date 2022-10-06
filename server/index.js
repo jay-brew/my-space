@@ -3,8 +3,11 @@ const express = require('express');
 const app = express();
 const port = 4000;
 const db = require('./config/db');
+const cors = require("cors");
 
-app.get("/", (req,res) => {
+app.use(cors());
+
+app.get("/api/get", (req,res) => {
     const sql = "SELECT * FROM board_sample.table1";
     db.query(sql, (err, result) => {
         res.send("result : "+ JSON.stringify(result));

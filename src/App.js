@@ -12,8 +12,8 @@ import Home from './page/Home';
 function App() {
 
   useEffect(()=>{
-    axios.get('http://localhost:3000/api/test')
-    .then(res=>console.log(res))
+    axios.get('http://localhost:4000/api/get')
+    .then(res=>console.log(res));
   })
 
   return (
