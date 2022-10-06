@@ -1,0 +1,76 @@
+body {
+  background-color: white !important;
+  font-family: "Georgia" !important;
+}
+
+/* Header component css - 헤더(Menu Bar, bg img) */
+.header{
+  width: 100%;
+  height: 30px;
+  padding : 20px;
+  background: black;
+  /* 가로 정렬 */
+  display: flex;
+  /* 가로 중앙 정렬 */
+  justify-content: center;
+  /* 세로 중앙 정렬 */
+  align-items: center;
+  /* 고정 */
+  position: fixed;
+  background: linear-gradient(black, transparent)
+}
+
+/* 헤더 글 css */
+.headerText{
+  color: white;
+  /* margin: 0px 10px 0px 10px; */
+  cursor: pointer;
+}
+
+/* 헤더 글 마우스 오버 */
+.headerText:hover{
+  font-weight: bold;
+}
+
+/* 헤더 글 클릭 시 변경시킬 색깔  */
+.click{
+  color:red;
+}
+
+/* 화면 스크롤 시 Menu bar 투명도 관련 배경색 지정 */
+.blackScroll{
+  background: #000000;
+}
+
+/* Main component css */
+.main{
+  padding: 20px 20px 20px 20px ;
+  display: flex;
+  min-height: calc(100vh - 280px);
+  height: 100%;
+}
+
+/* Footer component css */
+.footer {
+  height: 90px;
+  padding : 20px;
+  background: gray;
+  margin-top: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Login page css */
+.login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.loginBox{
+  border: 3px solid yellow;
+  padding: 15rem;
+  border-radius: 1rem;
+}
