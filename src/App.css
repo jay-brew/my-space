@@ -3,6 +3,10 @@ body {
   font-family: "Georgia" !important;
 }
 
+.headerNavbar{
+  display: none;
+}
+
 /* Header component css - 헤더(Menu Bar, bg img) */
 .header{
   width: 100%;
