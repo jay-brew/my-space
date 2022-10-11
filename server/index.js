@@ -4,14 +4,8 @@ const app = express();
 const port = 4000; // 겹치지 않게
 const db = require('./config/db');
 const cors = require("cors");
-const bodyParser = require('body-parser');
-
-// const session = require('express-session'); // 세션 관리
-// const cookieParser = require('cookie-parser'); // 쿠키 파싱 미들웨어
-// const dotenv = require('dotenv'); // .env SECRET 정보
 
 app.use(express.json())
-app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 
 app.get("/api/get", (req,res) => {
