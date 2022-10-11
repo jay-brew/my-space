@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './component/Header';
-import A from './page/A';
+import Signup from './page/Signup';
 import B from './page/B.js';
 import C from './page/C';
 import D from './page/D';
@@ -23,7 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />}/>
         <Route path="/Home" element={<Home />}/>
-        <Route path="/A" element={<A />}/>
+        <Route path="/Signup" element={<Signup />}/>
         <Route path="/B" element={<B />}/>
         <Route path="/C" element={<C />}/>
         <Route path="/D" element={<D />}/>
