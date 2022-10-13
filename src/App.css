@@ -73,7 +73,24 @@ body {
   align-items: center;
   min-height: 100vh;
 }
-.loginBox{
+
+.login input{
+  margin: 3px;
+}
+.login a{
+  font-size: 12px;
+  padding: 5px;
+  font-weight: bold;
+}
+.login button{
+  display: block;
+  margin: auto;
+  width: 96%;
+  height: 30px;
+  background-color: yellow;
+}
+
+.loginBorderBox{
   border: 3px solid yellow;
   padding: 15rem;
   border-radius: 1rem;
