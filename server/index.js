@@ -37,21 +37,20 @@ app.get("/api/get", (req,res) => {
 });
 
 app.post("/signup", (req,res) => {
-    const salt = genSaltSync(10);
-    req.body.id = hashSync(req.body.id, salt);
+    // const salt = genSaltSync(10);
+    // req.body.id = hashSync(req.body.id, salt);
 
-    const jsontoken = sign({ id: req.body.id }, "SECRET_TOKEN" , {
-        expiresIn: "1h"
-      });
+    // const jsontoken = sign({ id: req.body.id }, "SECRET_TOKEN" , {
+    //     expiresIn: "1h"
+    // });
       
-    console.log("jsontoken : ", jsontoken);
-    var idx = req.body.idx;
+    // console.log("jsontoken : ", jsontoken);
     var id = req.body.id;
-    var password = req.body.password;
+    var password = req.body.pw;
     var email = req.body.email;
 
-    const sqlQuery = "insert into login(`idx`,`id`,`password`, `email`) VALUES (?, ?, ?, ?);";
-     db.query(sqlQuery, [idx, id, password, email], (err, result) => {
+    const sqlQuery = "insert into login(`id`,`password`, `email`) VALUES (?, ?, ?);";
+     db.query(sqlQuery, [id, password, email], (err, result) => {
        res.send(result);
      });
 });
