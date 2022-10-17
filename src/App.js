@@ -14,7 +14,7 @@ function App() {
 
   useEffect(()=>{
     axios.get('http://localhost:4000/api/get')
-    .then(res=>console.log(res));
+    .then(res=>console.log("res : ", res.data ));
   });
 
   return (

@@ -32,7 +32,7 @@ app.set('view engine', 'hbs');
 app.get("/api/get", (req,res) => {
     const sql = "SELECT * FROM login";
     db.query(sql, (err, result) => {
-        res.send("result : "+ JSON.stringify(result));
+        res.send(JSON.stringify(result));
     })
 });
 

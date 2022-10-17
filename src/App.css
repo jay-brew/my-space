@@ -121,10 +121,13 @@ body {
 }
 
 .signupBorderBox form input{
-  margin-bottom: 40px;
   margin-right: 10px;
   border: 0;
   border-bottom: 1px solid gray;
+}
+
+.signupRow {
+  margin-bottom: 40px;
 }
 
 .signupBorderBox form input:focus{
