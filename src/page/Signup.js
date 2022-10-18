@@ -28,32 +28,79 @@ const Signup = () => {
   const Navigate = useNavigate();
 
   const signupButton = () => {
-    const checkColorList = [idCheckColor, nicknameCheckColor, pwCheckColor, emailCheckColor];
-    const signupCheck = checkColorList.find((item,index) => {
-      if(item === "red") {
-        return false
-      }
 
+    const checkColorList = [{id:idCheckColor}, {password:pwCheckColor}, {nickname:nicknameCheckColor}, {email:emailCheckColor}];
+    const colorCheck = new Array();
+    const signupCheck = checkColorList.map((item,index) => {
+        if(item.id === "red"){
+          colorCheck.push("id ");
+          return item;
+        } else if(item.password === "red"){
+          colorCheck.push("password ");
+          return item;
+        } else if(item.nickname === "red"){
+          colorCheck.push("nickname ");
+          return item;
+        } else if(item.email === "red"){
+          colorCheck.push("email ");
+          return item;
+        } else {
+          return item;
+        }
     })
-    if(signupCheck=== undefined){
-      alert("필수 입력 정보를 확인해 주세요.");
+
+    if(colorCheck.length !== 0){
+      alert(colorCheck+"을(를) 확인해 주세요.");
+      return false;
+    } else {
+      const test = axios.get('http://localhost:4000/api/get', {responseType: "json"})
+      .then((res)=>{
+        const checkDataList = res.data;
+        let idFlag = false;
+        let nicknameFlag = false;
+        const check = checkDataList.find((item,index)=>{
+          if(item.id === id || item.nickname === nickname){
+            if(item.id === id){
+              idFlag = true;
+            }
+            if(item.nickname === nickname){
+              nicknameFlag = true;
+            }
+            return true;
+          }
+        });
+        if(check === undefined){
+          alert("회원가입 완료!");
+          axios.post("http://localhost:4000/signup", {
+            id:id,
+            pw:pw,
+            nickname:nickname,
+            email: email
+          })
+        } else {
+          console.log("idFlag : ", idFlag);
+          console.log("nicknameFlag : ", nicknameFlag);
+          alert("회원가입 오류! 아이디 혹은 닉네임이 이미 존재합니다.");
+          if(idFlag===true){
+            setIdMessage("이미 사용중인 아이디입니다.");
+            setIdCheckColor('red');
+          }
+          if(nicknameFlag===true){
+            setNicknameMessage("이미 사용중인 닉네임입니다.");
+            setNicknameCheckColor('red');
+          }
+        }
+      })
     }
-    // axios.post("http://localhost:4000/signup", {
-    //   id:id,
-    //   pw:pw,
-    //   email: email
-    // })
   };
 
   const checkValue = (checkName) => {
-    
     const res  = axios.get('http://localhost:4000/api/get', {
       responseType: "json"}).then((res)=>{
       const checkDataList = res.data;
       const check = checkDataList.find((item,index)=>{
-        if(checkName==='id' ? id === item[checkName] : nickname === item[checkValue]){return true;}
+        if(checkName==='id' ? id === item[checkName] : nickname === item[checkName]){return true;}
       });
-
       if(checkName === 'id') {
         if(id.length === 0){
           alert("아이디를 입력해 주세요.");
@@ -62,28 +109,28 @@ const Signup = () => {
         } else {
           if(check!==undefined){
             setIdMessage("이미 사용중인 아이디입니다.");
+            setIdCheckColor('red');
           } else {
             setIdMessage("사용 가능한 아이디입니다.");
             setIdCheckColor('blue');
           }
         }
       } else {
-        if(id.length === 0){
+        if(nickname.length === 0){
           alert("닉네임을 입력해 주세요.");
           nicknameInput.current.focus();
           return false;
         } else {
           if(check!==undefined){
-            setNicknameMessage("이미 사용중인 아이디입니다.");
+            setNicknameMessage("이미 사용중인 닉네임입니다.");
+            setNicknameCheckColor('red');
           } else {
-            setNicknameMessage("사용 가능한 아이디입니다.");
+            setNicknameMessage("사용 가능한 닉네임입니다.");
             setNicknameCheckColor('blue');
           }
         }
       }
-      
     });
-    
   };
 
   // 아이디
@@ -106,6 +153,7 @@ const Signup = () => {
           setIdMessage('');
         } else {
           setIdMessage('아이디 중복확인 클릭(필수)');
+          setIdCheckColor('red');
         }
       }
     }
@@ -117,8 +165,8 @@ const Signup = () => {
       setNicknameMessage("두 글자 이상 입력해 주세요.");
       setNicknameCheckColor('red');
     } else {
-      setNicknameMessage('');
-      setNicknameCheckColor('blue');
+      setNicknameMessage('닉넨임 중복확인 클릭(필수)');
+      setNicknameCheckColor('red');
     }
   },[nickname]);
 
@@ -166,7 +214,7 @@ const Signup = () => {
               <div className='signupRow'>
                 <label>닉네임</label><br/>
                 <input type="text" onChange={(event)=>{setNickname(event.target.value)}} ref={nicknameInput}/>
-                <label style={{cursor:"pointer"}} onClick={()=>checkValue('nickName')}>중복확인</label><br/>
+                <label style={{cursor:"pointer"}} onClick={()=>checkValue('nickname')}>중복확인</label><br/>
                 <div style={{height:"15px"}}><label style={{fontSize:"13px", color:`${nicknameCheckColor}`, fontWeight:"bold"}}>{nicknameMessage}</label></div>
               </div>
               <div className='signupRow'>

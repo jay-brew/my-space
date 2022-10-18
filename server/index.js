@@ -47,10 +47,11 @@ app.post("/signup", (req,res) => {
     // console.log("jsontoken : ", jsontoken);
     var id = req.body.id;
     var password = req.body.pw;
+    var nickname = req.body.nickname;
     var email = req.body.email;
 
-    const sqlQuery = "insert into login(`id`,`password`, `email`) VALUES (?, ?, ?);";
-     db.query(sqlQuery, [id, password, email], (err, result) => {
+    const sqlQuery = "insert into login(`id`,`password`, `nickname`, `email`) VALUES (?, ?, ? ,?);";
+     db.query(sqlQuery, [id, password, nickname, email], (err, result) => {
        res.send(result);
      });
 });
