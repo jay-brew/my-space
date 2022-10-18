@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import crypto from 'crypto-js';
 
 const Login = () => {
   const [id, setID] = useState(''); // 아이디
@@ -13,33 +14,31 @@ const Login = () => {
   // 로그인 버튼 클릭 시 수행
   const loginBtnClick = () => {
     if(id === '') {
-      console.log("???")
       alert("아이디를 입력해 주세요.");
-      idInput.current.focus();//focus api 사용 //curre
+      idInput.current.focus(); //focus api 사용 
       return false;
     } else if(pw === '') {
       alert("비밀번호를 입력해 주세요.");
-      pwInput.current.focus();//focus api 사용 //curre
+      pwInput.current.focus(); //focus api 사용 
       return false;
     } else {
       actionLogin()
-      // navigate("/Home");
     }
   };
 
   const actionLogin = () => {
-
+    axios.post('http://localhost:4000/login', {
+      id:id,
+      pw:pw
+    })
+    .then(res=>
+      res.data!=="로그인 성공" ? alert(res.data) : navigate("/home")
+    );
   };
 
   const signupButton = () => {
     navigate("/Signup");
   };
-
-  useEffect(()=>{
-    axios.get('http://localhost:4000/api/get')
-    .then(res=>console.log(res.request));
-  });
-
 
   return (
     <div>

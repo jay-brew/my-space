@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import crypto from 'crypto-js';
 
 const Signup = () => {
   const [id, setId] = useState(''); // 아이디
   const [idMessage, setIdMessage] = useState(''); // 아이디 유효성 검사 메시지
   const [idCheckColor, setIdCheckColor] = useState('red');  // 아이디 체크 메시지 컬러
+
   const idInput = useRef();
   const nicknameInput = useRef();
   const pwInput = useRef();
@@ -23,7 +25,7 @@ const Signup = () => {
 
   const [email, setEmail] = useState(''); // 이메일
   const [emailMessage, setEmailMessage] = useState(''); // 이메일 유효성 검사 메시지
-  const [emailCheckColor, setEmailCheckColor] = useState(''); // 이메일 유효성 체크 메시지 컬러
+  const [emailCheckColor, setEmailCheckColor] = useState('red'); // 이메일 유효성 체크 메시지 컬러
 
   const Navigate = useNavigate();
 
@@ -71,9 +73,10 @@ const Signup = () => {
         });
         if(check === undefined){
           alert("회원가입 완료!");
+          const pwCrypto = crypto.AES.encrypt(pw, 'secret key').toString();
           axios.post("http://localhost:4000/signup", {
             id:id,
-            pw:pw,
+            pw:pwCrypto,
             nickname:nickname,
             email: email
           })
@@ -165,8 +168,12 @@ const Signup = () => {
       setNicknameMessage("두 글자 이상 입력해 주세요.");
       setNicknameCheckColor('red');
     } else {
-      setNicknameMessage('닉넨임 중복확인 클릭(필수)');
-      setNicknameCheckColor('red');
+      if(nickname.length === 0){
+        setNicknameMessage('');
+      } else {
+        setNicknameMessage('닉넨임 중복확인 클릭(필수)');
+        setNicknameCheckColor('red');
+      }
     }
   },[nickname]);
 
@@ -181,8 +188,9 @@ const Signup = () => {
         setPwCheckColor("red");
       }
     } else {
-      setPwMessage('')
+      setPwMessage('');
     }
+    
   },[pw, rePw]);
 
   // 이메일

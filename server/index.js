@@ -4,6 +4,7 @@ const app = express();
 const port = 4000; // 겹치지 않게
 const db = require('./config/db');
 const cors = require("cors");
+const crypto = require('crypto-js');
 
 const {sign} = require('jsonwebtoken');
 const { genSaltSync, hashSync, compareSync } = require("bcrypt");
@@ -35,6 +36,24 @@ app.get("/api/get", (req,res) => {
         res.send(JSON.stringify(result));
     })
 });
+
+app.post("/login", (req,res) => {
+    //const sqlLogin = "SELECT * FROM login WHERE id ="+"'"+req.body.id+"'"+"AND password ="+"';"
+    const sqlLogin = "SELECT * FROM login WHERE id = ? ;";
+    db.query(sqlLogin,[req.body.id], (err, result) => {
+        if(result[0]===undefined) {
+            res.send("존재하지 않는 id입니다.");
+        }  else {
+            if(req.body.pw === crypto.AES.decrypt(result[0]["password"], 'secret key').toString(crypto.enc.Utf8)){
+                res.send("로그인 성공");
+            }else {
+                res.send("비밀번호가 일치하지 않습니다.");
+            }
+        }
+    })
+});
+
+
 
 app.post("/signup", (req,res) => {
     // const salt = genSaltSync(10);

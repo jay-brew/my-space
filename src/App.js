@@ -22,11 +22,11 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Login />}/>
-        <Route path="/Home" element={<Home />}/>
-        <Route path="/Signup" element={<Signup />}/>
-        <Route path="/B" element={<B />}/>
-        <Route path="/C" element={<C />}/>
-        <Route path="/D" element={<D />}/>
+        <Route path="/home" element={<Home />}/>
+        <Route path="/signup" element={<Signup />}/>
+        <Route path="/b" element={<B />}/>
+        <Route path="/c" element={<C />}/>
+        <Route path="/d" element={<D />}/>
       </Routes>
     </div>
   );
