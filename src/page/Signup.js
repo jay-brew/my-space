@@ -31,9 +31,9 @@ const Signup = () => {
 
   const signupButton = () => {
 
-    const checkColorList = [{id:idCheckColor}, {password:pwCheckColor}, {nickname:nicknameCheckColor}, {email:emailCheckColor}];
+    const checkColorList = new[{id:idCheckColor}, {password:pwCheckColor}, {nickname:nicknameCheckColor}, {email:emailCheckColor}];
     const colorCheck = new Array();
-    const signupCheck = checkColorList.map((item,index) => {
+    checkColorList.map((item,index) => {
         if(item.id === "red"){
           colorCheck.push("id ");
           return item;
@@ -55,7 +55,7 @@ const Signup = () => {
       alert(colorCheck+"을(를) 확인해 주세요.");
       return false;
     } else {
-      const test = axios.get('http://localhost:4000/api/get', {responseType: "json"})
+      axios.get('http://localhost:4000/api/get', {responseType: "json"})
       .then((res)=>{
         const checkDataList = res.data;
         let idFlag = false;
@@ -98,7 +98,7 @@ const Signup = () => {
   };
 
   const checkValue = (checkName) => {
-    const res  = axios.get('http://localhost:4000/api/get', {
+    axios.get('http://localhost:4000/api/get', {
       responseType: "json"}).then((res)=>{
       const checkDataList = res.data;
       const check = checkDataList.find((item,index)=>{
