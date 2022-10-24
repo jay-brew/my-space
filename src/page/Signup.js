@@ -31,7 +31,7 @@ const Signup = () => {
 
   const signupButton = () => {
 
-    const checkColorList = new[{id:idCheckColor}, {password:pwCheckColor}, {nickname:nicknameCheckColor}, {email:emailCheckColor}];
+    const checkColorList = [{id:idCheckColor}, {password:pwCheckColor}, {nickname:nicknameCheckColor}, {email:emailCheckColor}];
     const colorCheck = new Array();
     checkColorList.map((item,index) => {
         if(item.id === "red"){
@@ -81,8 +81,6 @@ const Signup = () => {
             email: email
           })
         } else {
-          console.log("idFlag : ", idFlag);
-          console.log("nicknameFlag : ", nicknameFlag);
           alert("회원가입 오류! 아이디 혹은 닉네임이 이미 존재합니다.");
           if(idFlag===true){
             setIdMessage("이미 사용중인 아이디입니다.");

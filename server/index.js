@@ -56,22 +56,22 @@ app.post("/login", (req,res) => {
             if(req.body.pw === crypto.AES.decrypt(result[0]["password"], 'secret key').toString(crypto.enc.Utf8)){
                 const token = jwt.sign(
                     {
-                    id:"id"
+                        id:"id"
                     },
-                    process.env.REACT_APP_SECRET_TOKEN_PASSWORD,
+                        process.env.REACT_APP_SECRET_TOKEN_PASSWORD,
                     {
-                    expiresIn:'7d'
+                        expiresIn:'7d'
                     },
                 );
 
                 const cookies = new Cookies();
-                cookies.set("token",token);
+                cookies.set("token",token);   
 
-                const sqlQuery = "insert into login(`id`,`token`) ON DEPLICATE KEY UPDATE (?, token);";
-                db.query(sqlQuery, [id, token], (err, result) => {
+                const sqlToken = "UPDATE login SET token=? WHERE id=?;";
+                db.query(sqlToken,[cookies.get("token"), req.body.id], (err, result) => {
+                    console.log(`UPDATE login SET token=${cookies.get("token")} WHERE id=${req.body.id};`)
                     res.send("로그인 성공");
-                });
-                
+                })
             }else {
                 res.send("비밀번호가 일치하지 않습니다.");
             }
@@ -79,17 +79,16 @@ app.post("/login", (req,res) => {
     })
 });
 
+app.post("/logout", (req,res) => {
+    var id = req.body.id;
 
+    const sqlToken = "UPDATE login SET token=? WHERE id=?;";
+    db.query(sqlToken,['', req.body.id], (err, result) => {
+        res.send("로그아웃");
+    })
+});
 
 app.post("/signup", (req,res) => {
-    // const salt = genSaltSync(10);
-    // req.body.id = hashSync(req.body.id, salt);
-
-    // const jsontoken = sign({ id: req.body.id }, "SECRET_TOKEN" , {
-    //     expiresIn: "1h"
-    // });
-      
-    // console.log("jsontoken : ", jsontoken);
     var id = req.body.id;
     var password = req.body.pw;
     var nickname = req.body.nickname;
@@ -100,6 +99,8 @@ app.post("/signup", (req,res) => {
        res.send(result);
      });
 });
+
+
 
 
 app.listen(port, () => {

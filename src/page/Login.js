@@ -10,7 +10,6 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  console.log(process.env.REACT_APP_SECRET_TOKEN_PASSWORD)
   // 로그인 버튼 클릭 시 수행
   const loginBtnClick = () => {
     if(id === '') {

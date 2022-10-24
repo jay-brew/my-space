@@ -1,6 +1,19 @@
+import axios from 'axios';
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Main = () => {
+  const navigate = useNavigate();
+
+  const logoutButton = () => {
+    axios.post('http://localhost:4000/logout', {
+      id:'id5'
+    })
+    .then(res=>
+      res.data!=="로그아웃" ? alert(res.data) : navigate("/")
+    );
+  };
+
   return (
     <div className='main'>
       <div style={{height:"1300px", width:"100%", border:"5px solid yellow"}}>
@@ -13,7 +26,7 @@ const Main = () => {
                 <div>PW : <input type="text" /></div>
                 <div>
                   <a>회원가입</a>
-                  <button>Login</button>
+                  <button onClick={()=>{logoutButton()}}>로그아웃</button>
                 </div>
               </div>
             </div>
