@@ -17,6 +17,8 @@ function App() {
     .then(res=>console.log("res : ", res.data ));
   });
 
+  console.log("app")
+
   return (
     <div>
       <Header />

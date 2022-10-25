@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [id, setID] = useState(''); // 아이디
@@ -31,7 +31,11 @@ const Login = () => {
       pw:pw
     })
     .then(res=>
-      res.data!=="로그인 성공" ? alert(res.data) : navigate("/home")
+      res.data!=="로그인 성공" ? 
+      alert(res.data) 
+        : 
+      // navigate("/home")
+      window.location.href='/home'
     );
   };
 

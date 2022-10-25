@@ -10,7 +10,12 @@ const Main = () => {
       id:'id5'
     })
     .then(res=>
-      res.data!=="로그아웃" ? alert(res.data) : navigate("/")
+      res.data!=="로그아웃" ? 
+      alert(res.data) 
+        : 
+      // navigate("/")
+      
+      window.location.href='/'
     );
   };
 

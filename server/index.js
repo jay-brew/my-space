@@ -21,8 +21,6 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { rejectSeries } = require('async');
 
-// const {hashSync, getSaltSync, compareSync} = require('bcrypt');
-
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({
@@ -30,23 +28,20 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static('public'));
-// app.engine("hbs",exphbs({ extname: '.hbs' }));
 app.set('view engine', 'hbs');
 
 app.get("getCookie")
 
+// MySQL Table GET
 app.get("/api/get", (req,res) => {
-    
-    // console.log(cookies.get("token"));
-    
     const sql = "SELECT * FROM login";
     db.query(sql, (err, result) => {
         res.send(JSON.stringify(result));
     })
 });
 
+// 로그인
 app.post("/login", (req,res) => {
-    //const sqlLogin = "SELECT * FROM login WHERE id ="+"'"+req.body.id+"'"+"AND password ="+"';"
     const sqlLogin = "SELECT * FROM login WHERE id = ? ;";
     db.query(sqlLogin,[req.body.id], (err, result) => {
         console.log(result);
@@ -65,7 +60,7 @@ app.post("/login", (req,res) => {
                 );
 
                 const cookies = new Cookies();
-                cookies.set("token",token);   
+                cookies.set("token",token);
 
                 const sqlToken = "UPDATE login SET token=? WHERE id=?;";
                 db.query(sqlToken,[cookies.get("token"), req.body.id], (err, result) => {
@@ -79,6 +74,7 @@ app.post("/login", (req,res) => {
     })
 });
 
+// 로그아웃
 app.post("/logout", (req,res) => {
     var id = req.body.id;
 
@@ -88,6 +84,7 @@ app.post("/logout", (req,res) => {
     })
 });
 
+// 회원가입
 app.post("/signup", (req,res) => {
     var id = req.body.id;
     var password = req.body.pw;
@@ -99,9 +96,6 @@ app.post("/signup", (req,res) => {
        res.send(result);
      });
 });
-
-
-
 
 app.listen(port, () => {
     console.log(`http://localhost:${port}/`);
