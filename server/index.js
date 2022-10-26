@@ -7,19 +7,13 @@ const cors = require("cors");
 const crypto = require('crypto-js');
 const jwt = require('jsonwebtoken');
 const {Cookies} = require('react-cookie');
-
 const {sign} = require('jsonwebtoken');
-const { genSaltSync, hashSync, compareSync } = require("bcrypt");
-const saltRounds = 10;
-const plainTextPassword1 = 'asdf1234';
-const plainTextPassword2 = 'qwer1234';
 
 require('dotenv').config();
 
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const { rejectSeries } = require('async');
 
 app.use(express.json());
 app.use(cors());
@@ -30,14 +24,33 @@ app.use(cookieParser());
 app.use(express.static('public'));
 app.set('view engine', 'hbs');
 
-app.get("getCookie")
 
 // MySQL Table GET
 app.get("/api/get", (req,res) => {
     const sql = "SELECT * FROM login";
     db.query(sql, (err, result) => {
-        res.send(JSON.stringify(result));
+        res.send(req.cookies);
+        // res.send(JSON.stringify(result));
     })
+});
+
+app.get('/loginCookieCheck', (req, res)=>{
+   
+});
+
+// setCookie
+app.get('/setCookie', (req,res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS, GET');
+    res.setHeader('Access-Control-Allow-Credentials', 'true'); // 쿠키도 공유
+    res.setHeader('Access-Control-Allow-Headers', 'Context-type');
+    res.cookie("id",req.query.id);
+    res.send("로그인 성공")
+});
+
+app.get('/deleteCookie', (req,res)=>{
+    res.clearCookie('id');
+    res.send("쿠키 삭제")
 });
 
 // 로그인

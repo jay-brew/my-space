@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [id, setID] = useState(''); // 아이디
@@ -9,6 +9,9 @@ const Login = () => {
   const pwInput = useRef();// nameInput 객체생성 useRef();호출
 
   const navigate = useNavigate();
+
+  axios.get('http://localhost:4000/loginCookieCheck', {})
+  .then(res=>alert("???"))
 
   // 로그인 버튼 클릭 시 수행
   const loginBtnClick = () => {
@@ -35,7 +38,12 @@ const Login = () => {
       alert(res.data) 
         : 
       // navigate("/home")
-      window.location.href='/home'
+      //window.location.href='/home'
+      axios.get('http://localhost:4000/setCookie?id='+id, {
+        id:id,
+        withCredentials: true,
+      })
+      .then(res=>alert("hihihihihihi"))
     );
   };
 
