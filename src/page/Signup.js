@@ -108,12 +108,16 @@ const Signup = () => {
           idInput.current.focus();
           return false;
         } else {
-          if(check!==undefined){
-            setIdMessage("이미 사용중인 아이디입니다.");
-            setIdCheckColor('red');
+          if(idCheckColor === "red" && idMessage !== '아이디 중복확인 클릭(필수)'){
+            alert(idMessage);
           } else {
-            setIdMessage("사용 가능한 아이디입니다.");
-            setIdCheckColor('blue');
+            if(check!==undefined){
+              setIdMessage("이미 사용중인 아이디입니다.");
+              setIdCheckColor('red');
+            } else {
+              setIdMessage("사용 가능한 아이디입니다.");
+              setIdCheckColor('blue');
+            }
           }
         }
       } else {
@@ -122,12 +126,16 @@ const Signup = () => {
           nicknameInput.current.focus();
           return false;
         } else {
-          if(check!==undefined){
-            setNicknameMessage("이미 사용중인 닉네임입니다.");
-            setNicknameCheckColor('red');
+          if(nicknameCheckColor === "red" && nicknameMessage !== '닉넨임 중복확인 클릭(필수)'){
+            alert(nicknameMessage);
           } else {
-            setNicknameMessage("사용 가능한 닉네임입니다.");
-            setNicknameCheckColor('blue');
+            if(check!==undefined){
+              setNicknameMessage("이미 사용중인 닉네임입니다.");
+              setNicknameCheckColor('red');
+            } else {
+              setNicknameMessage("사용 가능한 닉네임입니다.");
+              setNicknameCheckColor('blue');
+            }
           }
         }
       }

@@ -29,8 +29,8 @@ app.set('view engine', 'hbs');
 app.get("/api/get", (req,res) => {
     const sql = "SELECT * FROM login";
     db.query(sql, (err, result) => {
-        res.send(req.cookies);
-        // res.send(JSON.stringify(result));
+        //res.send(req.cookies);
+        res.send(JSON.stringify(result));
     })
 });
 

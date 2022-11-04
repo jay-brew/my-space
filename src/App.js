@@ -1,5 +1,3 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './component/Header';
@@ -11,10 +9,6 @@ import Home from './page/Home';
 import Login from './page/Login';
 
 function App() {
-
-  useEffect(()=>{
-
-  });
 
   return (
     <div>

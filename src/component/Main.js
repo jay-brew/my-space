@@ -1,9 +1,8 @@
 import axios from 'axios';
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
 
 const Main = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const logoutButton = () => {
     axios.post('http://localhost:4000/logout', {
