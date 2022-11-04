@@ -34,23 +34,36 @@ app.get("/api/get", (req,res) => {
     })
 });
 
-app.get('/loginCookieCheck', (req, res)=>{
-   
-});
-
-// setCookie
+// 로그인 관련 쿠키 추가
 app.get('/setCookie', (req,res) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS, GET');
     res.setHeader('Access-Control-Allow-Credentials', 'true'); // 쿠키도 공유
     res.setHeader('Access-Control-Allow-Headers', 'Context-type');
     res.cookie("id",req.query.id);
-    res.send("로그인 성공")
+    res.send("로그인 성공");
 });
 
+// 로그인 관련 쿠키 삭제
 app.get('/deleteCookie', (req,res)=>{
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS, GET');
+    res.setHeader('Access-Control-Allow-Credentials', 'true'); // 쿠키도 공유
+    res.setHeader('Access-Control-Allow-Headers', 'Context-type');
     res.clearCookie('id');
-    res.send("쿠키 삭제")
+    res.send("");
+});
+
+app.get('/cookieCheck', (req,res)=>{
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS, GET');
+    res.setHeader('Access-Control-Allow-Credentials', 'true'); // 쿠키도 공유
+    res.setHeader('Access-Control-Allow-Headers', 'Context-type');
+    if(req.cookies.id!==undefined){
+        res.send("0")
+    } else {
+        res.send("-1")
+    }
 });
 
 // 로그인
@@ -90,7 +103,9 @@ app.post("/login", (req,res) => {
 // 로그아웃
 app.post("/logout", (req,res) => {
     var id = req.body.id;
-
+    
+    res.clearCookie('id');
+    
     const sqlToken = "UPDATE login SET token=? WHERE id=?;";
     db.query(sqlToken,['', req.body.id], (err, result) => {
         res.send("로그아웃");

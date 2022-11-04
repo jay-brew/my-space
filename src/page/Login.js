@@ -10,8 +10,10 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  axios.get('http://localhost:4000/loginCookieCheck', {})
-  .then(res=>alert("???"))
+  axios.get('http://localhost:4000/cookieCheck', {
+    withCredentials: true
+  })
+  .then(res=>res.data===0 ? window.location.href="/home" : "/");
 
   // 로그인 버튼 클릭 시 수행
   const loginBtnClick = () => {
@@ -43,7 +45,7 @@ const Login = () => {
         id:id,
         withCredentials: true,
       })
-      .then(res=>alert("hihihihihihi"))
+      .then(res=>window.location.href='/home')
     );
   };
 

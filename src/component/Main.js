@@ -14,8 +14,12 @@ const Main = () => {
       alert(res.data) 
         : 
       // navigate("/")
+      //window.location.href='/'
+      axios.get('http://localhost:4000/deleteCookie', {
+        withCredentials: true
+      })
+      .then(res=>window.location.href='/')
       
-      window.location.href='/'
     );
   };
 

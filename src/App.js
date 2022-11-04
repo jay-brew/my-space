@@ -13,11 +13,8 @@ import Login from './page/Login';
 function App() {
 
   useEffect(()=>{
-    axios.get('http://localhost:4000/api/get')
-    .then(res=>console.log("res : ", res.data ));
-  });
 
-  console.log("app")
+  });
 
   return (
     <div>
