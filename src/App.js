@@ -10,6 +10,16 @@ import Login from './page/Login';
 
 function App() {
 
+  if(document.cookie === "" && document.location.pathname !== "/") {
+    if(document.location.pathname !== "/home") {
+      window.location.href="/"
+    } else {
+      if(document.cookie === ""){
+        window.location.href="/"
+      }
+    }
+  }
+
   return (
     <div>
       <Header />

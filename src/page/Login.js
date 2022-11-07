@@ -13,7 +13,7 @@ const Login = () => {
   axios.get('http://localhost:4000/cookieCheck', {
     withCredentials: true
   })
-  .then(res=>res.data===0 ? window.location.href="/home" : "/");
+  .then(res=>res.data===0 ? window.location.href="/home" : "");
 
   // 로그인 버튼 클릭 시 수행
   const loginBtnClick = () => {
@@ -37,11 +37,12 @@ const Login = () => {
       pw:pw
     })
     .then(res=>
-      res.data!=="로그인 성공" ? 
-      alert(res.data) 
+      res.data[0].id===undefined ? 
+      alert(res.data)
         : 
       // navigate("/home")
       //window.location.href='/home'
+      sessionStorage.setItem("user",JSON.stringify(res.data[0])),
       axios.get('http://localhost:4000/setCookie?id='+id, {
         id:id,
         withCredentials: true,
