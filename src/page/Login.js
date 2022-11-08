@@ -10,10 +10,10 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  axios.get('http://localhost:4000/cookieCheck', {
-    withCredentials: true
-  })
-  .then(res=>res.data===0 ? window.location.href="/home" : "");
+  // axios.get('http://localhost:4000/cookieCheck', {
+  //   withCredentials: true
+  // })
+  // .then(res=>res.data===true ? navigate("/home") : "");
 
   // 로그인 버튼 클릭 시 수행
   const loginBtnClick = () => {
@@ -42,12 +42,12 @@ const Login = () => {
         : 
       // navigate("/home")
       //window.location.href='/home'
-      sessionStorage.setItem("user",JSON.stringify(res.data[0])),
+      localStorage.setItem("user",JSON.stringify(res.data[0])),
       axios.get('http://localhost:4000/setCookie?id='+id, {
         id:id,
         withCredentials: true,
       })
-      .then(res=>window.location.href='/home')
+      .then(res=>navigate("/home"))
     );
   };
 

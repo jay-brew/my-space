@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import Header from './component/Header';
 import Signup from './page/Signup';
@@ -7,18 +7,30 @@ import C from './page/C';
 import D from './page/D';
 import Home from './page/Home';
 import Login from './page/Login';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function App() {
+  const [loginCookie, setLoginCookie] = useState(null);
+  const navigate = useNavigate();
 
-  if(document.cookie === "" && document.location.pathname !== "/") {
-    if(document.location.pathname !== "/home") {
-      window.location.href="/"
-    } else {
-      if(document.cookie === ""){
-        window.location.href="/"
+  useEffect(()=>{
+    axios.get("http://localhost:4000/cookieCheck", {
+      withCredentials: true
+    })
+    .then(res=>loginCheckTrue(res.data))
+
+    const loginCheckTrue = (loginCheckValue) => {
+      setLoginCookie(loginCheckValue);
+      if(loginCheckValue === false){
+        navigate("/");
+      } else {
+        if(window.location.pathname === "/"){
+          navigate("/home");
+        }
       }
-    }
-  }
+    };
+  }, [])
 
   return (
     <div>

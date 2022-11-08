@@ -4,7 +4,7 @@ import React from 'react'
 const Main = () => {
   // const navigate = useNavigate();
 
-  console.log(JSON.parse(sessionStorage.getItem("user")).id);
+  console.log(JSON.parse(localStorage.getItem("user")).id);
 
   const logoutButton = () => {
     axios.post('http://localhost:4000/logout', {
@@ -32,8 +32,8 @@ const Main = () => {
             <div style={{height:"200px", width:"200px", border:"5px solid yellow", margin:"10px"}}>
               User Info
               <div style={{margin:"13px"}}>
-                <div>ID : <label id="id">{JSON.parse(sessionStorage.getItem("user")).id}</label></div>
-                <div>NICK : <label id="nickname">{JSON.parse(sessionStorage.getItem("user")).nickname}</label></div>
+                <div>ID : <label id="id">{JSON.parse(localStorage.getItem("user")).id}</label></div>
+                <div>NICK : <label id="nickname">{JSON.parse(localStorage.getItem("user")).nickname}</label></div>
                 <div>
                   <a>회원가입</a>
                   <button onClick={()=>{logoutButton()}}>로그아웃</button>

@@ -71,9 +71,9 @@ app.get('/cookieCheck', (req,res)=>{
     res.setHeader('Access-Control-Allow-Credentials', 'true'); // 쿠키도 공유
     res.setHeader('Access-Control-Allow-Headers', 'Context-type');
     if(req.cookies.id!==undefined){
-        res.send("0")
+        res.send(true)
     } else {
-        res.send("-1")
+        res.send(false)
     }
 });
 
@@ -84,7 +84,6 @@ app.post("/login", (req,res) => {
         if(result[0]===undefined) {
             res.send("존재하지 않는 id입니다.");
         }  else {
-            
             if(req.body.pw === crypto.AES.decrypt(result[0]["password"], 'secret key').toString(crypto.enc.Utf8)){
                 const token = jwt.sign(
                     {
