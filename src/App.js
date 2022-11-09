@@ -2,13 +2,14 @@ import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import Header from './component/Header';
 import Signup from './page/Signup';
-import B from './page/B.js';
-import C from './page/C';
-import D from './page/D';
 import Home from './page/Home';
 import Login from './page/Login';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Study from './page/Study';
+import DailyLife from './page/DailyLife';
+import News from './page/News';
+import Idea from './page/Idea';
 
 function App() {
   const [loginCookie, setLoginCookie] = useState(null);
@@ -39,9 +40,10 @@ function App() {
         <Route path="/" element={<Login />}/>
         <Route path="/home" element={<Home />}/>
         <Route path="/signup" element={<Signup />}/>
-        <Route path="/b" element={<B />}/>
-        <Route path="/c" element={<C />}/>
-        <Route path="/d" element={<D />}/>
+        <Route path="/study" element={<Study  />}/>
+        <Route path="/dailylife" element={<DailyLife />}/>
+        <Route path="/news" element={<News />}/>
+        <Route path="/idea" element={<Idea />}/>
       </Routes>
     </div>
   );
