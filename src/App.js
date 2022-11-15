@@ -10,6 +10,7 @@ import Study from './page/Study';
 import DailyLife from './page/DailyLife';
 import News from './page/News';
 import Idea from './page/Idea';
+import { Create } from './page/Create';
 
 function App() {
   const [loginCookie, setLoginCookie] = useState(null);
@@ -41,6 +42,7 @@ function App() {
         <Route path="/home" element={<Home />}/>
         <Route path="/signup" element={<Signup />}/>
         <Route path="/study" element={<Study  />}/>
+        <Route path="/study/create" element={<Create  />}/>
         <Route path="/dailylife" element={<DailyLife />}/>
         <Route path="/news" element={<News />}/>
         <Route path="/idea" element={<Idea />}/>

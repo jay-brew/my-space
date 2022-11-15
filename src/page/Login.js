@@ -52,7 +52,7 @@ const Login = () => {
   };
 
   const signupButton = () => {
-    navigate("/Signup");
+    navigate("/signup");
   };
 
   return (

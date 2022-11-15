@@ -140,6 +140,16 @@ app.post("/signup", (req,res) => {
      });
 });
 
+// study 글 등록
+app.post("/study/create", (req,res) => {
+    var content = req.body.createText;
+
+    const sqlQuery = "insert into studyTable(`content`) VALUES (?);";
+     db.query(sqlQuery, [content], (err, result) => {
+       res.send(result);
+     });
+});
+
 app.listen(port, () => {
     console.log(`http://localhost:${port}/`);
 });

@@ -28,7 +28,7 @@ const Header = () => {
 
     return (
       <div>
-        {window.location.pathname === '/' || window.location.pathname === "/Signup" ? 
+        {window.location.pathname === '/' || window.location.pathname === "/signup" || window.location.pathname ==="/create" ? 
         '' 
         : 
         <div>
