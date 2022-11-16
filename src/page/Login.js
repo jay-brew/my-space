@@ -37,17 +37,13 @@ const Login = () => {
       pw:pw
     })
     .then(res=>
-      res.data[0].id===undefined ? 
-      alert(res.data)
-        : 
-      // navigate("/home")
-      //window.location.href='/home'
-      localStorage.setItem("user",JSON.stringify(res.data[0])),
+      res.data[0].id===undefined ? alert(res.data)
+      :
       axios.get('http://localhost:4000/setCookie?id='+id, {
         id:id,
         withCredentials: true,
       })
-      .then(res=>navigate("/home"))
+      .then(res=>navigate("/home"),localStorage.setItem("user",JSON.stringify(res.data[0])))
     );
   };
 

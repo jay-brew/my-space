@@ -129,10 +129,10 @@ app.post("/logout", (req,res) => {
 
 // 회원가입
 app.post("/signup", (req,res) => {
-    var id = req.body.id;
-    var password = req.body.pw;
-    var nickname = req.body.nickname;
-    var email = req.body.email;
+    let id = req.body.id;
+    let password = req.body.pw;
+    let nickname = req.body.nickname;
+    let email = req.body.email;
 
     const sqlQuery = "insert into login(`id`,`password`, `nickname`, `email`) VALUES (?, ?, ? ,?);";
      db.query(sqlQuery, [id, password, nickname, email], (err, result) => {
@@ -140,15 +140,41 @@ app.post("/signup", (req,res) => {
      });
 });
 
+// study 글 가져오기
+app.get("/getStudyList", (req,res) => {
+    const sqlQuery = "SELECT * FROM react.studytable;";
+    db.query(sqlQuery, (err, result) => {
+       res.send(result);
+    });
+});
+
+http://localhost:4000/study/getCreate
+
 // study 글 등록
 app.post("/study/create", (req,res) => {
-    var content = req.body.createText;
+    let title = req.body.title;
+    let content = req.body.content;
 
-    const sqlQuery = "insert into studyTable(`content`) VALUES (?);";
-     db.query(sqlQuery, [content], (err, result) => {
+    console.log("title : ", title);
+    console.log("content : ", content);
+    const sqlQuery = "insert into studyTable(`content`, `title`) VALUES (?, ?);";
+    db.query(sqlQuery, [title, content], (err, result) => {
        res.send(result);
-     });
+    });
 });
+
+app.post("/study/update", (req,res) => {
+    let title = req.body.title;
+    let content = req.body.content; 
+
+    const sqlToken = "update studyTable SET title=?, content=? WHERE idx=?;";
+    db.query(sqlToken,[title, content, idx], (err, result) => {
+        //console.log(`UPDATE login SET token=${cookies.get("token")} WHERE id=${req.body.id};`);
+        //db.query("SELECT id, nickname FROM login WHERE id = ?;",[req.body.id], (err, result) => {
+            res.send(result);
+        //})
+    })
+})
 
 app.listen(port, () => {
     console.log(`http://localhost:${port}/`);
