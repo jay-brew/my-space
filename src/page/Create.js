@@ -7,12 +7,11 @@ export const Create = () => {
     const [createTitleText, setCreateTitleText] = useState("");
     const [createContentText, setCreateContentText] = useState("");
 
-
     const createBtnClick = () => {
         axios.post("http://localhost:4000/study/create", {
             title : createTitleText,
             content : createContentText
-        })
+        });
     }
 
   return (

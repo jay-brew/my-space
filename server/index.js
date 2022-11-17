@@ -140,7 +140,7 @@ app.post("/signup", (req,res) => {
      });
 });
 
-// study 글 가져오기
+// study 글 list 가져오기
 app.get("/getStudyList", (req,res) => {
     const sqlQuery = "SELECT * FROM react.studytable;";
     db.query(sqlQuery, (err, result) => {
@@ -148,7 +148,14 @@ app.get("/getStudyList", (req,res) => {
     });
 });
 
-http://localhost:4000/study/getCreate
+// post 가져오기
+app.get("/getPost/:idx", (req,res) => {
+    const idx = req.params.idx;
+    const sqlQuery = "SELECT * FROM studytable WHERE idx=?;";
+    db.query(sqlQuery,[idx], (err, result) => {
+       res.send(result);
+    });
+});
 
 // study 글 등록
 app.post("/study/create", (req,res) => {
