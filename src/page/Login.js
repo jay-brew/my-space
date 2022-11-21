@@ -56,7 +56,7 @@ const Login = () => {
       <div className='login'>
         <div className='loginBorderBox'>
           <div><input id='id' placeholder='아이디를 입력해 주세요.' onChange={(event) => setID(event.target.value)} ref={idInput}/></div>
-          <div><input id='pw' placeholder='비밀번호를 입력해 주세요.' onChange={(event) => setPw(event.target.value)} ref={pwInput}/></div>
+          <div><input type={"password"} id='pw' placeholder='비밀번호를 입력해 주세요.' onChange={(event) => setPw(event.target.value)} ref={pwInput}/></div>
           <div><button onClick={()=>{loginBtnClick()}}>Login</button></div>
           <div><a onClick={()=>{signupButton()}}>회원가입</a><a>비밀번호찾기</a></div>
         </div>

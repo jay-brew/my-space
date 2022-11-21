@@ -164,24 +164,26 @@ app.post("/study/create", (req,res) => {
 
     console.log("title : ", title);
     console.log("content : ", content);
-    const sqlQuery = "insert into studyTable(`content`, `title`) VALUES (?, ?);";
+    const sqlQuery = "update into studyTable(`content`, `title`) VALUES (?, ?);";
     db.query(sqlQuery, [title, content], (err, result) => {
        res.send(result);
     });
 });
 
+// study 글 수정
 app.post("/study/update", (req,res) => {
     let title = req.body.title;
-    let content = req.body.content; 
+    let content = req.body.content;
+    let idx = req.body.idx;
 
-    const sqlToken = "update studyTable SET title=?, content=? WHERE idx=?;";
-    db.query(sqlToken,[title, content, idx], (err, result) => {
-        //console.log(`UPDATE login SET token=${cookies.get("token")} WHERE id=${req.body.id};`);
-        //db.query("SELECT id, nickname FROM login WHERE id = ?;",[req.body.id], (err, result) => {
-            res.send(result);
-        //})
-    })
-})
+    console.log("title : ", title);
+    console.log("content : ", content);
+    const sqlQuery = "update studyTable SET title=?, content=? WHERE idx=?;";
+    db.query(sqlQuery, [title, content, idx], (err, result) => {
+       res.send(result);
+    });
+
+});
 
 app.listen(port, () => {
     console.log(`http://localhost:${port}/`);
