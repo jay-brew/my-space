@@ -182,7 +182,16 @@ app.post("/study/update", (req,res) => {
     db.query(sqlQuery, [title, content, idx], (err, result) => {
        res.send(result);
     });
+});
 
+// study 글 삭제
+app.post("/study/delete", (req,res) => {
+    let idx = req.body.idx;
+
+    const sqlQuery = "delete FROM studyTable WHERE idx=?;";
+    db.query(sqlQuery, [idx], (err, result) => {
+       res.send(result);
+    });
 });
 
 app.listen(port, () => {
