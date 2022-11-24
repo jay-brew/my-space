@@ -28,7 +28,7 @@ const Post = () => {
         title : title,
         content : content,
         idx:idx
-      }).then(alert("정상 삭제되었습니다."))
+      }).then(alert("정상 수정되었습니다."))
     };
 
     const deleteButtonClick = () => {
@@ -37,6 +37,7 @@ const Post = () => {
         idx: idx
       }).then(alert("정상 삭제되었습니다."), navigate("/study"))
     }; 
+
     
   return (
     <div>

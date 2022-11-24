@@ -50,12 +50,16 @@ const Login = () => {
     navigate("/signup");
   };
 
+  const onKeyPress = (e) => {
+    if(e.key === 'Enter'){loginBtnClick()}
+  };
+  
   return (
     <div>
       <div className='login'>
         <div className='loginBorderBox'>
-          <div><input id='id' placeholder='아이디를 입력해 주세요.' onChange={(event) => setID(event.target.value)} ref={idInput}/></div>
-          <div><input type={"password"} id='pw' placeholder='비밀번호를 입력해 주세요.' onChange={(event) => setPw(event.target.value)} ref={pwInput}/></div>
+          <div><input id='id' placeholder='아이디를 입력해 주세요.' onChange={(event) => setID(event.target.value)} ref={idInput} onKeyPress={onKeyPress} /></div>
+          <div><input type={"password"} id='pw' placeholder='비밀번호를 입력해 주세요.' onChange={(event) => setPw(event.target.value)} ref={pwInput} onKeyPress={onKeyPress} /></div>
           <div><button onClick={()=>{loginBtnClick()}}>Login</button></div>
           <div><a onClick={()=>{signupButton()}}>회원가입</a><a>비밀번호찾기</a></div>
         </div>
