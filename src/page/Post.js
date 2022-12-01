@@ -40,14 +40,16 @@ const Post = () => {
 
     
   return (
-    <div>
-      <div>Post</div>
+    <div className='main'>
+      <div>
+        <div>Post</div>
         <button onClick={()=>{updateText()}}>수정</button><button onClick={()=>{updateButtonClick()}}>수정하기</button><button onClick={()=>{deleteButtonClick()}}>삭제하기</button>
         <div>
           <table>
-          <tr><td>{post&&post[0].idx}</td><td><input type="text" id="title" onChange={(e)=>setTitle(e.target.value)} defaultValue={post&&post[0].title} disabled={inputDisable}/></td><td><input type="text" id="title" onChange={(e)=>setContent(e.target.value)} defaultValue={post&&post[0].content} disabled={inputDisable}/></td></tr>
+            <tr><td>{post&&post[0].idx}</td><td><input type="text" id="title" onChange={(e)=>setTitle(e.target.value)} defaultValue={post&&post[0].title} disabled={inputDisable}/></td><td><input type="text" id="title" onChange={(e)=>setContent(e.target.value)} defaultValue={post&&post[0].content} disabled={inputDisable}/></td></tr>
           </table>
         </div>
+      </div>
     </div>
   )
 }

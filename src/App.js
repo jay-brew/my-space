@@ -12,6 +12,8 @@ import News from './page/News';
 import Idea from './page/Idea';
 import { Create } from './page/Create';
 import Post from './page/Post';
+import Counter from './component/Counter';
+import CounterContainer from './containers/CounterContainer';
 
 function App() {
   const [loginCookie, setLoginCookie] = useState(null);
@@ -39,7 +41,8 @@ function App() {
     <div>
       <Header />
       <Routes>
-        <Route path="/" element={<Login />}/>
+        <Route path="/" element={<CounterContainer />}/>
+        {/* <Route path="/" element={<Login />}/> */}
         <Route path="/home" element={<Home />}/>
         <Route path="/signup" element={<Signup />}/>
         <Route path="/study" element={<Study  />}/>

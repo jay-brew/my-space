@@ -19,7 +19,8 @@ const Study = () => {
   };
 
   return (
-    <div>
+    <div className='main'>
+      <div>
       Study
       <Link to="/study/create" >글쓰기</Link>
       <table>
@@ -27,7 +28,7 @@ const Study = () => {
         {studyList&&studyList.map((item,index)=>(<tr onClick={()=>{postClick(item.idx)}} key={index}><td>{item.idx}</td><td>{item.title}</td><td>{item.content}</td></tr>))}
         </tbody>
       </table>
-      
+      </div>
     </div>
   )
 }

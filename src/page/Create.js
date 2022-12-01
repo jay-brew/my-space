@@ -15,11 +15,13 @@ export const Create = () => {
     }
 
   return (
-    <div>
+    <div className='main'>
+      <div>
         <h1>글쓰기</h1>
         <label>제목 : </label><input onChange={(e)=>setCreateTitleText(e.target.value)} /><br/>
-        <textarea onChange={(e)=>setCreateContentText(e.target.value)}></textarea><br/>
+        <label>내용 : </label><textarea onChange={(e)=>setCreateContentText(e.target.value)}></textarea><br/>
         <button onClick={()=>{createBtnClick()}}>등록</button>
+      </div>
     </div>
   )
 }
