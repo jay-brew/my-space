@@ -60,7 +60,9 @@ const Signup = () => {
         const checkDataList = res.data;
         let idFlag = false;
         let nicknameFlag = false;
-        const check = checkDataList.find((item,index)=>{
+        let check = undefined;
+        if(checkDataList !== ''){
+        check = checkDataList.find((item,index)=>{
           if(item.id === id || item.nickname === nickname){
             if(item.id === id){
               idFlag = true;
@@ -71,6 +73,7 @@ const Signup = () => {
             return true;
           }
         });
+        }
         if(check === undefined){
           alert("회원가입 완료!");
           const pwCrypto = crypto.AES.encrypt(pw, 'secret key').toString();
@@ -99,9 +102,12 @@ const Signup = () => {
     axios.get('http://localhost:4000/api/get', {
       responseType: "json"}).then((res)=>{
       const checkDataList = res.data;
-      const check = checkDataList.find((item,index)=>{
-        if(checkName==='id' ? id === item[checkName] : nickname === item[checkName]){return true;}
-      });
+      let check = undefined;
+      if(checkDataList !== ''){  
+         check = checkDataList.find((item,index)=>{
+          if(checkName==='id' ? id === item[checkName] : nickname === item[checkName]){return true;}
+        });
+      }
       if(checkName === 'id') {
         if(id.length === 0){
           alert("아이디를 입력해 주세요.");
