@@ -10,11 +10,10 @@ import Study from './page/Study';
 import DailyLife from './page/DailyLife';
 import News from './page/News';
 import Idea from './page/Idea';
-import Create from './page/Create';
+import {Create} from './page/Create';
 import Post from './page/Post';
 
 function App() {
-  const [loginCookie, setLoginCookie] = useState(null);
   const navigate = useNavigate();
 
   useEffect(()=>{
@@ -24,7 +23,6 @@ function App() {
     .then(res=>loginCheckTrue(res.data))
 
     const loginCheckTrue = (loginCheckValue) => {
-      setLoginCookie(loginCheckValue);
       if(loginCheckValue === false){
         navigate("/");
       } else {
@@ -46,7 +44,7 @@ function App() {
         <Route path="/dailylife" element={<DailyLife />}/>
         <Route path="/news" element={<News />}/>
         <Route path="/idea" element={<Idea />}/>
-        <Route path="/study/create" element={<Create  />}/>
+        <Route path="/study/create" element={<Create />}/>
         <Route path="/study/post" element={<Post />}/>
       </Routes>
     </div>

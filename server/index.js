@@ -95,15 +95,11 @@ app.post("/login", (req,res) => {
                     },
                 );
 
-                req.session.test = "test";
-                req.session.save();
-
                 const cookies = new Cookies();
                 cookies.set("token",token);
 
                 const sqlToken = "UPDATE login SET token=? WHERE id=?;";
                 db.query(sqlToken,[cookies.get("token"), req.body.id], (err, result) => {
-                    //console.log(`UPDATE login SET token=${cookies.get("token")} WHERE id=${req.body.id};`);
                     db.query("SELECT id, nickname FROM login WHERE id = ?;",[req.body.id], (err, result) => {
                         res.send(result);
                     })

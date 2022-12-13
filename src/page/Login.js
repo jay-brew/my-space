@@ -10,11 +10,6 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  // axios.get('http://localhost:4000/cookieCheck', {
-  //   withCredentials: true
-  // })
-  // .then(res=>res.data===true ? navigate("/home") : "");
-
   // 로그인 버튼 클릭 시 수행
   const loginBtnClick = () => {
     if(id === '') {
