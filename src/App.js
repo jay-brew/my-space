@@ -1,19 +1,17 @@
-import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
+import { useEffect, useState } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Header from './component/Header';
+import Login from './page/Login';
 import Signup from './page/Signup';
 import Home from './page/Home';
-import Login from './page/Login';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import Study from './page/Study';
 import DailyLife from './page/DailyLife';
 import News from './page/News';
 import Idea from './page/Idea';
-import { Create } from './page/Create';
+import Create from './page/Create';
 import Post from './page/Post';
-import Counter from './component/Counter';
-import CounterContainer from './containers/CounterContainer';
 
 function App() {
   const [loginCookie, setLoginCookie] = useState(null);
@@ -41,16 +39,15 @@ function App() {
     <div>
       <Header />
       <Routes>
-        {/* <Route path="/" element={<CounterContainer />}/> */}
         <Route path="/" element={<Login />}/>
         <Route path="/home" element={<Home />}/>
         <Route path="/signup" element={<Signup />}/>
         <Route path="/study" element={<Study  />}/>
-        <Route path="/study/create" element={<Create  />}/>
-        <Route path="/study/post" element={<Post />}/>
         <Route path="/dailylife" element={<DailyLife />}/>
         <Route path="/news" element={<News />}/>
         <Route path="/idea" element={<Idea />}/>
+        <Route path="/study/create" element={<Create  />}/>
+        <Route path="/study/post" element={<Post />}/>
       </Routes>
     </div>
   );
