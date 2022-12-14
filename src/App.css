@@ -7,22 +7,31 @@ body {
   display: none;
 }
 
+.wrap{
+  /* position 속성의 relative 설정은 요소를 원래 위치에서 벗어나게 배치할 수 있게 한다. */
+  position: relative;
+  /* footer 하단 고정 */
+  min-height: 100vh;
+}
+
 /* Header component css - 헤더(Menu Bar, bg img) */
 .header{
-  width: 88%;
-  height: 30px;
-  padding : 1%;
-  margin: 0 5% 0 5%;
-  background: black;
+  z-index: 1;
+  width: 100%;
+  height: 70px;
   /* 가로 정렬 */
   display: flex;
   /* 가로 중앙 정렬 */
   justify-content: center;
   /* 세로 중앙 정렬 */
   align-items: center;
-  /* 고정 */
+  /* 상단 고정 */
   position: fixed;
-  background: linear-gradient(black, transparent)
+  /* 배경 */
+  background: linear-gradient(black, transparent);
+  /* min-width (css)속성은 최소 높이를 설정한다.width 속성의 사용값이 자신의 값보다 작아지는 걸 방지한다. */
+  min-width: calc(700px);
+  min-height: calc(30px);
 }
 
 /* 헤더 글 css */
@@ -30,16 +39,18 @@ body {
   color: white;
   /* margin: 0px 10px 0px 10px; */
   cursor: pointer;
+  padding: 0px 0px 0px 20px;
 }
 
 /* 헤더 글 마우스 오버 */
 .headerText:hover{
   font-weight: bold;
+  color: yellow;
 }
 
 /* 헤더 글 클릭 시 변경시킬 색깔  */
 .click{
-  color:red;
+  color:yellow;
 }
 
 /* 화면 스크롤 시 Menu bar 투명도 관련 배경색 지정 */
@@ -49,14 +60,17 @@ body {
 
 /* Main component css */
 .main{
-  width: 88%;
-  height: 1300px;
+  width: 100vw;
+  min-width: calc(100vw);
+  height: 1000px;
+  /* header(상단 메뉴바)가와 footer(하단 영역)가 존재하기 때문에 top의 padding 을 여유롭게 준다. */
+  /* header와 동일하게 좌우 여백을 준다. */
+  padding: 150px 20px 100px 20px;
   /* padding (css)속성은 네 방향 안쪽 여백 영역을 의미한다. 상:15%, 우:1%, 하:1%, 좌:1%*/
   /* 현재 Header(상단 고정 바)가 존재하기 때문에 그 영향 주지 않기 위해 위 여백을 15% 주었다. */
-  padding: 15% 1% 1% 1%;
+  /* padding: 15% 1% 1% 1%; */
   /* margine (css)속성은 네 방향 바깥쪽 여백 영역을 의미한다. 상:0%, 우:5%, 하:0%, 좌:5% */
-  /* 보기 좋게 좌,우 여백을 5% 준다. */
-  margin: 0 5% 0 5%;
+  /* margin: 0 5% 0 5%; */
   /* display (css)속성은 요소를 블록과 인라인 요소 중 어느 쪽으로 처리할지와 함께, flow, grid, flex처럼 자식 요소를 배치할 때 사용할 레이아웃을 설정한다. */
   /* 즉 내부와 외부 디스플레이 유형을 설정한다. */
   /* 외부 디플 유형은 flow Layout에 요소가 참여하는 방법을 나타낸다. */
@@ -65,19 +79,31 @@ body {
   /* flex는 가로정렬이다. */
   display: flex;
   /* min-height (css)속성은 최소 높이를 설정한다.height 속성의 사용값이 자신의 값보다 작아지는 걸 방지한다. */
-  min-height: calc(100vh - 280px);
+  /* min-height: calc(1000px); */
+  /* min-width (css)속성은 최소 높이를 설정한다.width 속성의 사용값이 자신의 값보다 작아지는 걸 방지한다. */
+  /* min-width: calc(1000px); */
+  /* 자식 요소가 padding에 의해 벗어나는 것을 방지한다. */
+  box-sizing: border-box;
+  /* min-width (css)속성은 최소 너비를 설정한다.width 속성의 사용값이 자신의 값보다 작아지는 걸 방지한다. */
 }
 
 /* Footer component css */
 .footer {
+  width: 100%;
   height: 90px;
-  padding : 20px;
   background: gray;
-  margin-top: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  /* min-width (css)속성은 최소 높이를 설정한다.width 속성의 사용값이 자신의 값보다 작아지는 걸 방지한다. */
+  min-width: calc(700px);
+  /* 하단 고정 */
+  /* position 속성의 absolute 설정은 절대적으로 요소를 배치하지만 배치의 기준이 자신이 아닌 상위 요소에서 찾는다. */
+  /* DOM 트리를 따라 올라가다가 position 속성이 static이 아닌 첫 번째 상위 요소가 해당 요소의 배치 기준으로 설정된다. */
+  /* 만약 상위에 position 속성이 static이 아닌 요소가 없다면, DOM 트리는 최상위에 있는 <body>요소가 배치 구진이 왼다. */
+  position: absolute;
+  bottom: 0;
 }
 
 /* Login page css */

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Idea = () => {
   return (
-    <div className='main'>Idea</div>
+    <div>Idea</div>
   )
 }
 
