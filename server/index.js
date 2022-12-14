@@ -160,7 +160,7 @@ app.post("/study/create", (req,res) => {
 
     console.log("title : ", title);
     console.log("content : ", content);
-    const sqlQuery = "insert into studyTable(`content`, `title`) VALUES (?, ?);";
+    const sqlQuery = "insert into studyTable(`title`, `content`) VALUES (?, ?);";
     db.query(sqlQuery, [title, content], (err, result) => {
        res.send(result);
     });

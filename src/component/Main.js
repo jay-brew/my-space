@@ -2,7 +2,6 @@ import axios from 'axios';
 import React from 'react';
 import Popup from './Popup';
 import { useState } from 'react'
-import Select from './Select';
 
 const Main = () => {
   const [userDetailPopup, setUserDetailPopup] = useState(false); // user 상세 정보 팝업 state
@@ -39,30 +38,26 @@ const Main = () => {
         {/* Popup */}
         {userDetailPopup === false ? '' : <Popup popupClose={popupClose}/>}
         {/* left 영역 */}
-        <div style={{ border:"1px solid red", width:"15%"}}>
-          Left
+        <div style={{ border:"1px solid red", width:"15%", padding:"5px"}}>
+          Left<label style={{textDecorationLine:"underline", fontSize:"12px", color:"gray", cursor:"pointer", float:"right"}} onClick={()=>{logoutButton()}}>로그아웃</label>
           <div style={{width:"100%", height:"30%", textAlign:"center"}}>
             User Info
             <div>
               <div>
-                <img style={{border:"5px solid red",borderRadius:"30px"}} src={"/test.png"} width={"50px"} height={"50px"} onClick={()=>imgClick()}/>
+                <img style={{border:"3px solid red",borderRadius:"30px"}} src={"test.png"} width={"50px"} height={"50px"} onClick={()=>imgClick()}/>
               </div>
               <div>
-                ID : <label id="id">{JSON.parse(localStorage.getItem("user")).id}</label>
+                <label id="id">{JSON.parse(localStorage.getItem("user")).id}</label>
               </div>
-              <div>
+              {/* <div>
                 NICK : <label id="nickname">{JSON.parse(localStorage.getItem("user")).nickname}</label>
-              </div>
-              <div>
-                <a>회원가입</a>
-                <button onClick={()=>{logoutButton()}}>로그아웃</button>
-              </div>
+              </div> */}
             </div>
           </div>
           <div style={{width:"100%", height:"70%"}}>카테고리</div>
         </div>
         {/* rigth 영역 */}
-        <div style={{border:"1px solid blue", width:"85%"}}>
+        <div style={{border:"1px solid blue", width:"85%", padding:"5px"}}>
           Right
           <div style={{width:"100%", height:"100%"}}>
               <div style={{width:"100%", height:"10%"}}>one</div>

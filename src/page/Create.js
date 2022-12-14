@@ -1,17 +1,20 @@
 import axios from 'axios';
 import React from 'react'
-import { useEffect } from 'react';
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export const Create = () => {
     const [createTitleText, setCreateTitleText] = useState("");
     const [createContentText, setCreateContentText] = useState("");
+    const navigate = useNavigate();
+    const [post, setPost] = useState("");
 
     const createBtnClick = () => {
         axios.post("http://localhost:4000/study/create", {
             title : createTitleText,
             content : createContentText
-        });
+        })
+        .then(alert("정상적으로 등록되었습니다."),navigate("/study"))
     }
 
   return (

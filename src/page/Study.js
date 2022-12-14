@@ -10,6 +10,7 @@ const Study = () => {
   const [studyList, setStudyList] = useState(null);
   const navigate = useNavigate("");
   const dispatch = useDispatch();
+  const [viewPost, setViewPost] = useState("");
   let stateValue = useSelector((state)=>state);
 
   useEffect(()=>{
@@ -19,6 +20,7 @@ const Study = () => {
 
   const postClick = (idx) => {
     console.log(idx)
+    // post 호출해서 컴포넌트로 사용
     navigate('/study/post', {state:{idx:idx}})
   };
 
@@ -32,22 +34,18 @@ const Study = () => {
   const selectorClick = () => {
       console.log("state : ", stateValue);
   }
-
-
   return (
     <div className='main'>
-      <div>
-        <div>
-          <button onClick={()=>dispatchClick()}>useDispatch</button>
-          <button onClick={()=>selectorClick()}>useSelector</button>
-        </div>
-      Study
-      <Link to="/study/create" >글쓰기</Link>
-      <table>
-        <tbody>
-        {studyList&&studyList.map((item,index)=>(<tr onClick={()=>{postClick(item.idx)}} key={index}><td>{item.idx}</td><td>{item.title}</td><td>{item.content}</td></tr>))}
-        </tbody>
-      </table>
+      {/* Left */}
+      <div style={{width:"20%", padding:"5px", border:"1px solid red"}}>
+        <Link to="/study/create" >글쓰기</Link>
+        <button onClick={()=>dispatchClick()}>useDispatch</button>
+        <button onClick={()=>selectorClick()}>useSelector</button>
+        <table>
+          <tbody>
+          {studyList&&studyList.map((item,index)=>(<tr onClick={()=>{postClick(item.idx)}} key={index}><td>{item.idx}</td><td>{item.title}</td></tr>))}
+          </tbody>
+        </table>
       </div>
     </div>
   )
