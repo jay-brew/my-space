@@ -2,7 +2,7 @@ import React, {useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-  let [clickText , setClickText] = useState("");
+  let [clickText , setClickText] = useState("Home");
   let [scrollCss , setScrollCss] = useState("");
   let [className_click, setClassName_click] = useState("");
   let [scrollY, setScrollY] = useState(0);
