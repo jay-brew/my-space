@@ -17,7 +17,6 @@ const Select = (props) => {
         <select>
             {list.map((item, index)=><option value={item} ket={index}>{item}</option>)}
         </select>
-        
     </div>
 
   )

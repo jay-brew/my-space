@@ -2,7 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Post from './Post'
 
 const Study = () => {
@@ -20,7 +20,6 @@ const Study = () => {
   },[])
 
   const postClick = (idx) => {
-    console.log(idx)
     setViewPost(idx);
     setUpadateIdx(idx);
   };

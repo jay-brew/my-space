@@ -2,16 +2,13 @@ import axios from 'axios';
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import {useLocation, useNavigate } from 'react-router-dom';
 
 const Post = (props) => {
-    // const location = useLocation();
     const [post, setPost] = useState("");
     const [inputDisable, setInputDisable] = useState(true);
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [idx, setIdx] = useState("");
-    const navigate = useNavigate();
 
     const getPost = async() => {
       axios.get(`http://localhost:4000/getPost/${props.idx}`)
@@ -27,7 +24,6 @@ const Post = (props) => {
     };
 
     const showPost = (showPostVal) => {
-      console.log("1:,",showPostVal)
       props.showPost(showPostVal)
     }
 
@@ -46,13 +42,11 @@ const Post = (props) => {
         idx: idx
       }).then(alert("정상 삭제되었습니다."), showPost("delete"))
     }; 
-
     
   return (
     <div>
       <div>
         <div>Post<button onClick={()=>{updateText()}}>수정</button><button onClick={()=>{updateButtonClick()}}>수정하기</button><button onClick={()=>{deleteButtonClick()}}>삭제하기</button></div>
-        
         <div>
           <table>
             <tr><td>{post&&post[0].idx}</td><td><input type="text" id="title" onChange={(e)=>setTitle(e.target.value)} defaultValue={post&&post[0].title} disabled={inputDisable}/></td><td><input type="text" id="title" onChange={(e)=>setContent(e.target.value)} defaultValue={post&&post[0].content} disabled={inputDisable}/></td></tr>

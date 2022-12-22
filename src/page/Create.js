@@ -7,7 +7,6 @@ export const Create = () => {
     const [createTitleText, setCreateTitleText] = useState("");
     const [createContentText, setCreateContentText] = useState("");
     const navigate = useNavigate();
-    const [post, setPost] = useState("");
 
     const createBtnClick = () => {
         axios.post("http://localhost:4000/study/create", {

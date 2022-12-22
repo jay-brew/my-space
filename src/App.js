@@ -7,11 +7,13 @@ import Login from './page/Login';
 import Signup from './page/Signup';
 import Home from './page/Home';
 import Study from './page/Study';
-import DailyLife from './page/DailyLife';
+import Daily from './page/Daily';
 import News from './page/News';
 import Idea from './page/Idea';
 import {Create} from './page/Create';
 import Post from './page/Post';
+import Resume from './page/Resume';
+import Idpwfind from './page/Idpwfind';
 
 function App() {
   const navigate = useNavigate();
@@ -40,10 +42,12 @@ function App() {
         <Route path="/" element={<Login />}/>
         <Route path="/home" element={<Home />}/>
         <Route path="/signup" element={<Signup />}/>
-        <Route path="/study" element={<Study  />}/>
-        <Route path="/dailylife" element={<DailyLife />}/>
+        <Route path="/idpwfind" element={<Idpwfind />}/>
+        <Route path="/study" element={<Study />}/>
+        <Route path="/daily" element={<Daily />}/>
         <Route path="/news" element={<News />}/>
         <Route path="/idea" element={<Idea />}/>
+        <Route path="/resume" element={<Resume />}/>
         <Route path="/study/create" element={<Create />}/>
         <Route path="/study/post" element={<Post />}/>
       </Routes>

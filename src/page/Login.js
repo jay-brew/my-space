@@ -7,6 +7,7 @@ const Login = () => {
   const [pw, setPw] = useState('');    // 비밀번호
   const idInput = useRef();// nameInput 객체생성 useRef();호출
   const pwInput = useRef();// nameInput 객체생성 useRef();호출
+  const idPwFind = useRef("");
 
   const navigate = useNavigate();
 
@@ -48,6 +49,12 @@ const Login = () => {
   const onKeyPress = (e) => {
     if(e.key === 'Enter'){loginBtnClick()}
   };
+
+  // id : nickname과 e-mail이 일치하면 id를 찾아준다.
+  // pw : id와 e-mail이 일치하면 password를 찾아준다.
+  const idPasswordFind =()=>{
+    navigate("/idpwfind");
+  };
   
   return (
     <div>
@@ -55,8 +62,8 @@ const Login = () => {
         <div className='loginBorderBox'>
           <div><input id='id' placeholder='아이디를 입력해 주세요.' onChange={(event) => setID(event.target.value)} ref={idInput} onKeyPress={onKeyPress} /></div>
           <div><input type={"password"} id='pw' placeholder='비밀번호를 입력해 주세요.' onChange={(event) => setPw(event.target.value)} ref={pwInput} onKeyPress={onKeyPress} /></div>
-          <div><button onClick={()=>{loginBtnClick()}}>Login</button></div>
-          <div><a onClick={()=>{signupButton()}}>회원가입</a><a>비밀번호찾기</a></div>
+          <button onClick={()=>{loginBtnClick()}}>Login</button>
+          <div><a onClick={()=>{signupButton()}}>회원가입</a><a onClick={()=>{idPasswordFind()}} ref={idPwFind}>아이디/비밀번호 찾기</a></div>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import React from 'react'
 
 const DailyLife = () => {
   return (
-    <div className='main'>DailyLife</div>
+    <div className='main'>Daily</div>
   )
 }
 

@@ -12,7 +12,7 @@ const Main = () => {
     })
     .then(res=>
       res.data!=="로그아웃" ? 
-      alert(res.data) 
+      alert(res.data)
         : 
       axios.get('http://localhost:4000/deleteCookie', {
         withCredentials: true
@@ -41,7 +41,6 @@ const Main = () => {
         <div style={{ border:"1px solid red", width:"15%", padding:"5px"}}>
           Left<label style={{textDecorationLine:"underline", fontSize:"12px", color:"gray", cursor:"pointer", float:"right"}} onClick={()=>{logoutButton()}}>로그아웃</label>
           <div style={{width:"100%", height:"30%", textAlign:"center"}}>
-            User Info
             <div>
               <div>
                 <img style={{border:"3px solid red",borderRadius:"30px"}} src={"test.png"} width={"50px"} height={"50px"} onClick={()=>imgClick()}/>
