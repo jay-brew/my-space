@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [id, setID] = useState(''); // 아이디
-  const [pw, setPw] = useState('');    // 비밀번호
-  const idInput = useRef();// nameInput 객체생성 useRef();호출
-  const pwInput = useRef();// nameInput 객체생성 useRef();호출
+  const [pw, setPw] = useState(''); // 비밀번호
+  const idInput = useRef(); // id 객체생성 useRef();호출
+  const pwInput = useRef(); // pw 객체생성 useRef();호출
   const idPwFind = useRef("");
 
   const navigate = useNavigate();
