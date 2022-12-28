@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React from 'react';
 import Popup from './Popup';
 import { useState } from 'react'
@@ -6,6 +6,7 @@ import MemoSlide from './MemoSlide';
 
 const Main = () => {
   const [userDetailPopup, setUserDetailPopup] = useState(false); // user 상세 정보 팝업 state
+  const cardList = [{card:1},{card:2},{card:3},{card:4},{card:5},{card:6},{card:7},{card:8},{card:9},{card:10}]
 
   /*
   const logoutButton = () => {
@@ -53,6 +54,9 @@ const Main = () => {
               {/* <div>
                 NICK : <label id="nickname">{JSON.parse(localStorage.getItem("user")).nickname}</label>
               </div> */}
+              <div style={{float:"left"}}>
+                Project Search
+              </div>
             </div>
           </div>
           {/* <div style={{width:"100%", height:"70%"}}>카테고리</div> */}
