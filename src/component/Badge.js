@@ -4,8 +4,8 @@ const Badge = (props) => {
   const badgeList = props.badges;
 
   return (
-    <div>
-      {badgeList.map((item, index)=><div key={index} style={{border:"1px solid gray", borderRadius:"1rem"}}>{item.badge}</div>)}
+    <div style={{display:"flex"}}>
+      {badgeList.map((item, index)=><div key={index} style={{border:"1px solid gray", borderRadius:"0.5rem", padding:"3px", margin:"5px 03px 0px 0px", background:item.badge==='All'?'gray':""}}>{item.badge}</div>)}
     </div>
   )
 }

@@ -8,7 +8,9 @@ import Badge from './Badge';
 const Main = () => {
   const [userDetailPopup, setUserDetailPopup] = useState(false); // user 상세 정보 팝업 state
   const cardList = [{card:1},{card:2},{card:3},{card:4},{card:5},{card:6},{card:7},{card:8},{card:9},{card:10}];
-  const badgeList = [{badge:"뱃지1"},{badge:"뱃지2"},{badge:"뱃지3"},{badge:"뱃지4"},{badge:"뱃지5"}];
+  const badgeList = [{badge:"All"},{badge:"HTML/CSS"},{badge:"JavaScript"},{badge:"React"},{badge:"Redux"},{badge:"Node.js"},{badge:"MySQL"},{badge:"TypeScript"}];
+  const htmlCssList = [{title:"htmlCssList1"},{title:"htmlCssList2"},{title:"htmlCssList3"},{title:"htmlCssList4"},{title:"htmlCssList5"},{title:"htmlCssList5"},{title:"htmlCssList5"},{title:"htmlCssList5"}];
+  const javaScriptList = [{title:"javaScriptList1"},{title:"javaScriptList2"},{title:"javaScriptList3"},{title:"javaScriptList4"},{title:"javaScriptList5"},];
 
   /*
   const logoutButton = () => {
@@ -44,23 +46,26 @@ const Main = () => {
         {/* Popup */}
         {userDetailPopup === false ? '' : <Popup popupClose={popupClose}/>}
         {/* MY */}
-        <div style={{ border:"1px solid red", width:"100%", padding:"5px"}}>
+        <div style={{width:"100%"}}>
           {/* <label style={{textDecorationLine:"underline", fontSize:"12px", color:"gray", cursor:"pointer", float:"right"}} onClick={()=>{logoutButton()}}>로그아웃</label> */}
           <div style={{width:"100%", height:"30%", textAlign:"center"}}>
             <div>
-              <div>
-                <img style={{border:"3px solid red",borderRadius:"30px"}} src={"test.png"} width={"50px"} height={"50px"} onClick={()=>imgClick()}/><br/>
-                <label id="id">{JSON.parse(localStorage.getItem("user")).id}</label>
+              <div style={{background:"gray", padding:"20px 0px"}}>
+                <img style={{border:"3px solid red",borderRadius:"30px", background:"white"}} src={"test.png"} width={"50px"} height={"50px"} onClick={()=>imgClick()}/><br/>
+                <label id="id">{JSON.parse(localStorage.getItem("user")).id}</label><br/>
                 <MemoSlide memoCards={cardList}/>
               </div>
               {/* <div>
                 NICK : <label id="nickname">{JSON.parse(localStorage.getItem("user")).nickname}</label>
               </div> */}
               <div>
-                <div style={{margin:"0px auto", width:"1240px"}}>
+                <div style={{margin:"0px auto", width:"1240px"}}><br/>
+                  <div style={{float:"left", margin:"0px 5px 0px 5px", fontSize:"30px"}}>Memo List</div><br/><br/>
                   <div style={{float:"left", margin:"0px 5px 0px 5px"}}>
-                    Project Search
                     <Badge badges={badgeList} />
+                  </div><br/><br/>
+                  <div style={{display:"flex"}}>
+                    {htmlCssList.map((item,index)=><div style={{width:"200px", height:"300px", borderRight:index===10?"none":"1px solid gray"}}>item</div>)}
                   </div>
                 </div>
               </div>

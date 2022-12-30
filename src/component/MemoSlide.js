@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import MemoCard from './MemoCard'
 
 const MemoSlide = ({memoCards}) => {
-    const showCard = memoCards.showCard !== undefined ? memoCards.showCard : 3; // 보여줄 card의 default는 4이다.
+    const showCard = memoCards.showCard !== undefined ? memoCards.showCard : 4; // 보여줄 card의 default는 4이다.
     const cardWidth = memoCards.width !== undefined ? memoCards.showCard : 310; // 보여줄 card의 default width는 300+10(margin)이다.
     const outerIndex = useRef(showCard); 
     const [marginLeftValue, steMarginLeftValue] = useState(0);
@@ -12,6 +12,10 @@ const MemoSlide = ({memoCards}) => {
         if(outerIndex.current!==showCard){
           outerIndex.current = outerIndex.current-1;
           steMarginLeftValue(marginLeftValue+cardWidth);
+        } else {
+          // 마지막 카드로 가기
+          outerIndex.current = memoCards.length;
+          steMarginLeftValue(-(cardWidth*(memoCards.length-4)));
         }
         
       };
@@ -19,7 +23,7 @@ const MemoSlide = ({memoCards}) => {
       const rightBtnClick = () => {
         console.log(outerIndex.current);
         // 슬라이드 카드의 최대 개수의 경우 Right로 슬라이드 하지 않는다.
-        if(outerIndex.current!==memoCards.length-1){
+        if(outerIndex.current!==memoCards.length){
           if(outerIndex.current===showCard){
             outerIndex.current = showCard+1;
             steMarginLeftValue(marginLeftValue-cardWidth);
@@ -35,9 +39,10 @@ const MemoSlide = ({memoCards}) => {
       };
 
   return (
-    <div>
-        <MemoCard cardList={memoCards} marginLeftValue={marginLeftValue}/>
-        <button onClick={()=>leftBtnClick()}>Left</button><button onClick={()=>rightBtnClick()}>Right</button>
+    <div style={{display:"inline-flex"}}>
+           <div style={{position:"relative", left:"17px", userSelect:"none"}}><div style={{lineHeight:"300px", color:"red", fontSize:"30px", cursor:"pointer"}} onClick={()=>leftBtnClick()}>◀</div></div>
+          <MemoCard cardList={memoCards} marginLeftValue={marginLeftValue}/>
+          <div style={{position:"relative", right:"17px", userSelect:"none"}}><div style={{lineHeight:"300px", color:"red", fontSize:"30px", cursor:"pointer"}} onClick={()=>rightBtnClick()}>▶</div></div>
     </div>
   )
 }
