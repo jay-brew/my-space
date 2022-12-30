@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from './component/Header';
@@ -14,6 +14,7 @@ import {Create} from './page/Create';
 import Post from './page/Post';
 import Resume from './page/Resume';
 import Idpwfind from './page/Idpwfind';
+import TypeScript from './page/TypeScript';
 
 function App() {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ function App() {
         <Route path="/news" element={<News />}/>
         <Route path="/idea" element={<Idea />}/>
         <Route path="/resume" element={<Resume />}/>
+        <Route path="/typescript" element={<TypeScript />}/>
         <Route path="/study/create" element={<Create />}/>
         <Route path="/study/post" element={<Post />}/>
       </Routes>

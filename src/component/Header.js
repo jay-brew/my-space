@@ -41,6 +41,7 @@ const Header = () => {
               <Link to={"/news"} className={clickText!=='News'?'headerText' : `headerText ${className_click}`} onClick={(e)=>{setClickText(e.target.textContent)}} style={{}}>News</Link>
               <Link to={"/idea"} className={clickText!=='Idea'?'headerText' : `headerText ${className_click}`} onClick={(e)=>{setClickText(e.target.textContent)}} style={{}}>Idea</Link>
               <Link to={"/resume"} className={clickText!=='Resume'?'headerText' : `headerText ${className_click}`} onClick={(e)=>{setClickText(e.target.textContent)}} style={{}}>Resume</Link>
+              <Link to={"/typescript"} className={clickText!=='Resume'?'headerText' : `headerText ${className_click}`} onClick={(e)=>{setClickText(e.target.textContent)}} style={{}}>TypeScript</Link>
             <div style={{marginLeft:"auto", paddingRight:"20px"}}>
               <input placeholder={"검색어를 입력해 주세요."}/>
             </div>
