@@ -3,10 +3,12 @@ import React from 'react';
 import Popup from './Popup';
 import { useState } from 'react'
 import MemoSlide from './MemoSlide';
+import Badge from './Badge';
 
 const Main = () => {
   const [userDetailPopup, setUserDetailPopup] = useState(false); // user 상세 정보 팝업 state
-  const cardList = [{card:1},{card:2},{card:3},{card:4},{card:5},{card:6},{card:7},{card:8},{card:9},{card:10}]
+  const cardList = [{card:1},{card:2},{card:3},{card:4},{card:5},{card:6},{card:7},{card:8},{card:9},{card:10}];
+  const badgeList = [{badge:"뱃지1"},{badge:"뱃지2"},{badge:"뱃지3"},{badge:"뱃지4"},{badge:"뱃지5"}];
 
   /*
   const logoutButton = () => {
@@ -31,7 +33,7 @@ const Main = () => {
   }
 
   // user 이미지 클릭 시 user 상세 정보 팝업 노출
-  const imgClick = () => {
+  const imgClick = () => {   
     // userDetailPopup open(true)/close(false) 처리 
     userDetailPopup === false ? setUserDetailPopup(true) : setUserDetailPopup(false);
   }
@@ -49,13 +51,18 @@ const Main = () => {
               <div>
                 <img style={{border:"3px solid red",borderRadius:"30px"}} src={"test.png"} width={"50px"} height={"50px"} onClick={()=>imgClick()}/><br/>
                 <label id="id">{JSON.parse(localStorage.getItem("user")).id}</label>
-                <MemoSlide />
+                <MemoSlide memoCards={cardList}/>
               </div>
               {/* <div>
                 NICK : <label id="nickname">{JSON.parse(localStorage.getItem("user")).nickname}</label>
               </div> */}
-              <div style={{float:"left"}}>
-                Project Search
+              <div>
+                <div style={{margin:"0px auto", width:"1240px"}}>
+                  <div style={{float:"left", margin:"0px 5px 0px 5px"}}>
+                    Project Search
+                    <Badge badges={badgeList} />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
