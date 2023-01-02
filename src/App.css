@@ -60,6 +60,10 @@ body {
 
 /* Main component css */
 .main{
+  @media screen (max-width:700px){
+    color:red;
+  }
+
   width: 100%;
   min-width: calc(700px);
   height: 100%;

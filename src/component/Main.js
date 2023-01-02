@@ -61,12 +61,46 @@ const Main = () => {
               <div>
                 <div style={{margin:"0px auto", width:"1240px"}}><br/>
                   <div style={{float:"left", margin:"0px 5px 0px 5px", fontSize:"30px"}}>Memo List</div><br/><br/>
-                  <div style={{float:"left", margin:"0px 5px 0px 5px"}}>
-                    <Badge badges={badgeList} />
-                  </div><br/><br/>
-                  <div style={{display:"flex"}}>
-                    {htmlCssList.map((item,index)=><div style={{width:"200px", height:"300px", borderRight:index===10?"none":"1px solid gray"}}>item</div>)}
-                  </div>
+                    <div style={{float:"left", margin:"0px 5px 0px 5px"}}>
+                      <Badge badges={badgeList} />
+                    </div><br/><br/>
+                    <div style={{display:"flex"}}>
+                      {htmlCssList.map((item,index)=><div style={{width:"200px", height:"300px", borderRight:index===10?"none":"1px solid gray"}}>item</div>)}
+                    </div>
+                    <div style={{border:"1px solid gray", borderRadius:"1rem", margin:"0px auto", marginTop:"10px", width:"10%",}}>
+                      Memo Create
+                    </div>
+                    <div>
+                      <h2 style={{textAlign:"left"}}>콘텐츠 추천</h2>
+                      <ul style={{display:"flex", listStyleType:"none", justifyContent:"center"}}>
+                        <li style={{width:"300px", height:"200px", border:"1px solid blue", marginRight:"10px"}}>
+                          a
+                        </li>
+                        <li style={{width:"300px", height:"200px", border:"1px solid blue", marginRight:"10px"}}>
+                          b
+                        </li>
+                        <li style={{width:"300px", height:"200px", border:"1px solid blue"}}>
+                          c
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h2 style={{textAlign:"left"}}>핫이슈</h2>
+                      <div style={{display: "grid", gridTemplateColumns:"200px 200px", gridTemplateRows:"200px 200px", columnGap:"10px", rowGap:"10px"}}>
+                        <div style={{border:"1px solid orange"}}>
+                          1
+                        </div>
+                        <div style={{border:"1px solid orange"}}>
+                          1-1
+                        </div>
+                        <div style={{border:"1px solid orange"}}>
+                          2 
+                        </div>
+                        <div style={{border:"1px solid orange"}}>
+                          2-1
+                        </div>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>
