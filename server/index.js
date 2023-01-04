@@ -190,6 +190,24 @@ app.post("/study/delete", (req,res) => {
     });
 });
 
+// id, password 찾기
+app.post('/idpwfind', (req,res) => {
+    let id = req.body.id;
+    let email = req.body.email;
+    let nickname = req.body.nickname;
+    let idOrNick = id===undefined ? 'nickname' : 'id';
+    let idOrNickValue = id===undefined ? nickname : id;
+
+    const sqlQuery = "select * from login where email='"+email+"' AND " + idOrNick+"='"+idOrNickValue+"';"
+    db.query(sqlQuery, (err,result)=>{
+        if(result[0]===undefined){
+            res.send("일치하는 정보가 없습니다.")
+        } else {
+            id===undefined ? res.send(result[0]["id"]) : res.send(crypto.AES.decrypt(result[0]["password"], 'secret key').toString(crypto.enc.Utf8));
+        }
+    })
+})
+
 app.listen(port, () => {
     console.log(`http://localhost:${port}/`);
 });

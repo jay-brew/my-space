@@ -85,7 +85,7 @@ const Main = () => {
                       </ul>
                     </div>
                     <div>
-                      <h2 style={{textAlign:"left"}}>핫이슈</h2>
+                      <h2 style={{textAlign:"left"}}>핫토픽</h2>
                       <div style={{display: "grid", gridTemplateColumns:"200px 200px", gridTemplateRows:"200px 200px", columnGap:"10px", rowGap:"10px"}}>
                         <div style={{border:"1px solid orange"}}>
                           1
