@@ -3,6 +3,91 @@ body {
   font-family: "Georgia" !important;
 }
 
+/* Login page css */
+.login{
+  display: flex; 
+  /* 가로 중앙 정렬 */
+  justify-content: center; 
+  /* 세로 중앙 정렬 */
+  align-items: center;
+  min-height: 100vh;
+  background: gray;
+  min-width: calc(200px);
+}
+.login input{
+  display: block;
+  margin: 3px;
+}
+.login label{
+  font-size: 12px;
+  padding: 5px;
+  font-weight: bold;
+}
+.login input[type=button]{
+  display: block;
+  width: 177px;
+  padding: 2px;
+  border: 2px solid gray;
+  height: 30px;
+  background-color: white;
+}
+.login p{
+  width: 200px;
+}
+.loginForm{
+  border: 3px solid yellow;
+  border-radius: 1rem;
+  padding: 7rem;
+  height: 100px !important;
+  background: white;
+}
+
+/* Signup page css */
+.signup{
+  display: flex; 
+  /* 가로 중앙 정렬 */
+  justify-content: center; 
+  /* 세로 중앙 정렬 */
+  align-items: center;
+  min-height: 100vh;
+  background: gray;
+  min-width: calc(325px);
+}
+.signupForm{
+  display: flex;
+  align-items: center;
+  border: 3px solid yellow;
+  border-radius: 1rem;
+  padding: 5rem;
+  height: 400px;
+  background: white;
+}
+.signupForm form input{
+  margin-right: 10px;
+  border: 0;
+  border-bottom: 1px solid gray;
+}
+.signupForm form input[type=button]{
+  background: white;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+.signupForm form label{
+  display: block;
+  margin-bottom: 20px;
+  height: 15px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.signupForm div{
+  display: flex;
+  justify-content: center;
+}
+.signupTitle{
+  font-size: 15px !important;
+  margin-bottom: 0px !important;
+}
+
 .headerNavbar{
   display: none;
 }
@@ -106,34 +191,6 @@ body {
   bottom: 0;
 }
 
-/* Login page css */
-.login{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-.login input{
-  margin: 3px;
-}
-.login a{
-  font-size: 12px;
-  padding: 5px;
-  font-weight: bold;
-}
-.login button{
-  display: block;
-  margin: auto;
-  width: 96%;
-  height: 30px;
-  background-color: yellow;
-}
-.loginBorderBox{
-  border: 3px solid yellow;
-  padding: 15rem;
-  border-radius: 1rem;
-  height: 100px !important;
-}
 
 /* idpwfind page css */
 .yellowBox{
@@ -141,44 +198,6 @@ body {
   width: 30%;
   height: 50%;
   border: 1px solid yellow;
-}
-
-
-/* Signup page css */
-.signup{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-.signupBorderBox{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 3px solid yellow;
-  padding: 15rem;
-  border-radius: 1rem;
-  height: 10vh !important;
-}
-
-.signupForm {
-  height: 10vh !important;
-}
-
-.signupBorderBox form input{
-  margin-right: 10px;
-  border: 0;
-  border-bottom: 1px solid gray;
-}
-
-.signupRow {
-  margin-bottom: 40px;
-}
-
-.signupBorderBox form input:focus{
-  outline: none;
-  border-bottom: 1px solid gray;
 }
 
 table {
@@ -192,6 +211,7 @@ tr, td {
 
 /* 해상도 낮은 PC, 태블릿 기준 */
 @media all and (min-width:768px) and (max-width:1023){
+
 }
 
 /* 태블릿 기준 */
@@ -200,6 +220,37 @@ tr, td {
 }
 
 /* 모바일 기준 */
-@media all and (max-width:487){
-  
+@media (max-width:487px){
+  /* login */
+  .login{
+    display: flex; 
+    /* 가로 중앙 정렬 */
+    justify-content: center; 
+    /* 세로 중앙 정렬 */
+    align-items: center;
+    min-height: 0vh;
+    background: white;
+  }
+  .loginForm{
+    border: none;
+    padding: 2rem 5rem 5rem 5rem;
+    height: 100px !important;
+  }
+  .loginForm input{
+    height: 20px;
+  }
+  /* signup */
+  .signup{
+    display: flex; 
+    /* 가로 중앙 정렬 */
+    justify-content: center; 
+    /* 세로 중앙 정렬 */
+    align-items: center;
+    min-height: 0vh;
+    background: white;
+  }
+  .signupForm{
+    border: none;
+    padding: 2rem;
+  }
 }

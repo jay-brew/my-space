@@ -59,11 +59,16 @@ const Login = () => {
   return (
     <div>
       <div className='login'>
-        <div className='loginBorderBox'>
-          <div><input id='id' placeholder='아이디를 입력해 주세요.' onChange={(event) => setID(event.target.value)} ref={idInput} onKeyPress={onKeyPress} /></div>
-          <div><input type={"password"} id='pw' placeholder='비밀번호를 입력해 주세요.' onChange={(event) => setPw(event.target.value)} ref={pwInput} onKeyPress={onKeyPress} /></div>
-          <button onClick={()=>{loginBtnClick()}}>Login</button>
-          <div><a onClick={()=>{signupButton()}}>회원가입</a><a onClick={()=>{idPasswordFind()}} ref={idPwFind}>아이디/비밀번호 찾기</a></div>
+        <div className='loginForm'>
+          <div>
+            <input id='id' placeholder='아이디를 입력해 주세요.' onChange={(event) => setID(event.target.value)} ref={idInput} onKeyPress={onKeyPress} />
+            <input type={"password"} id='pw' placeholder='비밀번호를 입력해 주세요.' onChange={(event) => setPw(event.target.value)} ref={pwInput} onKeyPress={onKeyPress} />
+            <input type={"button"} onClick={()=>{loginBtnClick()}} value={"Login"}/>
+          </div>
+          <p>
+            <label onClick={()=>{signupButton()}}>회원가입</label>
+            <label onClick={()=>{idPasswordFind()}} ref={idPwFind}>아이디/비밀번호 찾기</label>
+          </p>
         </div>
       </div>
     </div>

@@ -223,36 +223,32 @@ const Signup = () => {
 
   return (
       <div className='signup'>
-        <div className='signupBorderBox'>
+        <div className='signupForm'>
             <form>
-              <div className='signupRow'>
-                <label>아이디</label><br/>
+                <label className="signupTitle">아이디</label>
                 <input type="text" onChange={(event)=>{setId(event.target.value)}} ref={idInput}/>
-                <label style={{cursor:"pointer"}} onClick={()=>{checkValue('id')}}>중복확인</label><br/>
-                <div style={{height:"15px"}}><label style={{fontSize:"13px", color:`${idCheckColor}`, fontWeight:"bold"}}>{idMessage}</label></div>
-              </div>
-              <div className='signupRow'>
-                <label>닉네임</label><br/>
+                <input type={"button"} style={{cursor:"pointer"}} onClick={()=>{checkValue('id')}} value={"중복확인"} />
+                <label style={{color:`${idCheckColor}`}}>{idMessage}</label>
+
+                <label className="signupTitle">닉네임</label>
                 <input type="text" onChange={(event)=>{setNickname(event.target.value)}} ref={nicknameInput}/>
-                <label style={{cursor:"pointer"}} onClick={()=>checkValue('nickname')}>중복확인</label><br/>
-                <div style={{height:"15px"}}><label style={{fontSize:"13px", color:`${nicknameCheckColor}`, fontWeight:"bold"}}>{nicknameMessage}</label></div>
-              </div>
-              <div className='signupRow'>
-                <label>비밀번호</label><br/>
-                <input type="password" onChange={(event)=>{setPw(event.target.value)}} ref={pwInput}/><br/><br/>
-                <label>비밀번호 확인</label><br/>
-                <input type="password" onChange={(event)=>{setRePw(event.target.value)}} ref={rePwInput}/><br/>
-                <div style={{height:"15px"}}><label style={{fontSize:"13px", color:`${pwCheckColor}`, fontWeight:"bold"}}>{pwMessage}</label></div>
-              </div>
-              <div className='signupRow'>
-                <label>e-mail</label><br/>
-                <input type="email" onChange={(event)=>{setEmail(event.target.value)}} ref={emailInput}/><br/>
-                <div style={{height:"15px"}}><label style={{fontSize:"13px", color:`${emailCheckColor}`, fontWeight:"bold"}}>{emailMessage}</label></div>
-              </div>
-              <div style={{padding:"0px 20px 0px 20px"}}>
-                <label style={{padding:"0px 5px 0px 5px", cursor:"pointer"}} onClick={()=>{Navigate("/")}}>로그인</label>
-                <label style={{padding:"0px 5px 0px 5px", cursor:"pointer"}} onClick={()=>{signupButton()}}>회원가입</label>
-              </div>
+                <input type={"button"} style={{cursor:"pointer"}} onClick={()=>checkValue('nickname')} value={"중복확인"} />
+                <label style={{fontSize:"13px", color:`${nicknameCheckColor}`, fontWeight:"bold"}}>{nicknameMessage}</label>
+
+                <label className="signupTitle">비밀번호</label>
+                <input type="password" onChange={(event)=>{setPw(event.target.value)}} ref={pwInput}/>
+
+                <label className="signupTitle">비밀번호 확인</label>
+                <input type="password" onChange={(event)=>{setRePw(event.target.value)}} ref={rePwInput}/>
+                <label style={{fontSize:"13px", color:`${pwCheckColor}`, fontWeight:"bold"}}>{pwMessage}</label>
+
+                <label className="signupTitle">e-mail</label>
+                <input type="email" onChange={(event)=>{setEmail(event.target.value)}} ref={emailInput}/>
+                <label style={{fontSize:"13px", color:`${emailCheckColor}`, fontWeight:"bold"}}>{emailMessage}</label>
+                <div>
+                  <input type={"button"} onClick={()=>{Navigate("/")}} value={"로그인"} />
+                  <input type={"button"} onClick={()=>{signupButton()}} value={"회원가입"} />
+                </div>
           </form>
         </div>
       </div>
