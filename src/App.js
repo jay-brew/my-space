@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from './component/Header';
+import Footer from './component/Footer';
 import Login from './page/Login';
 import Signup from './page/Signup';
 import Home from './page/Home';
@@ -37,7 +38,7 @@ function App() {
   }, [])
 
   return (
-    <div>
+    <div className='wrap'>
       <Header />
       <Routes>
         <Route path="/" element={<Login />}/>
@@ -53,6 +54,7 @@ function App() {
         <Route path="/study/create" element={<Create />}/>
         <Route path="/study/post" element={<Post />}/>
       </Routes>
+      <Footer />
     </div>
   );
 }

@@ -22,6 +22,10 @@ body {
   font-size: 12px;
   padding: 5px;
   font-weight: bold;
+  cursor: pointer;
+}
+.login label:hover{
+  text-decoration: underline;
 }
 .login input[type=button]{
   display: block;
@@ -30,6 +34,7 @@ body {
   border: 2px solid gray;
   height: 30px;
   background-color: white;
+  cursor: pointer;
 }
 .login p{
   width: 200px;
@@ -93,6 +98,8 @@ body {
 }
 
 .wrap{
+  display: flex;
+  width: 100%;
   /* position 속성의 relative 설정은 요소를 원래 위치에서 벗어나게 배치할 수 있게 한다. */
   position: relative;
   /* footer 하단 고정 */
@@ -115,7 +122,7 @@ body {
   /* 배경 */
   background: linear-gradient(black, transparent);
   /* min-width (css)속성은 최소 높이를 설정한다.width 속성의 사용값이 자신의 값보다 작아지는 걸 방지한다. */
-  min-width: calc(700px);
+  min-width: calc(750px);
   min-height: calc(30px);
 }
 
@@ -146,11 +153,13 @@ body {
 /* Main component css */
 .main{
   width: 100%;
-  min-width: calc(700px);
   height: 100%;
+  display: flex;
+  background: yellow;
   /* header(상단 메뉴바)가와 footer(하단 영역)가 존재하기 때문에 top의 padding 을 여유롭게 준다. */
   /* header와 동일하게 좌우 여백을 준다. */
-  padding: 100px 0px 100px 0px;
+  padding: 80px 100px 0px 100px;
+  margin-bottom: 100px;
   /* padding (css)속성은 네 방향 안쪽 여백 영역을 의미한다. 상:15%, 우:1%, 하:1%, 좌:1%*/
   /* 현재 Header(상단 고정 바)가 존재하기 때문에 그 영향 주지 않기 위해 위 여백을 15% 주었다. */
   /* padding: 15% 1% 1% 1%; */
@@ -162,14 +171,23 @@ body {
   /* 내부 디플 유형은 자식의 Layout 방식을 설정한다. */
   /* 디플의 일부 값은 자신만의 명세를 가지고 있다. */
   /* flex는 가로정렬이다. */
-  display: flex;
   /* min-height (css)속성은 최소 높이를 설정한다.height 속성의 사용값이 자신의 값보다 작아지는 걸 방지한다. */
   /* min-height: calc(1000px); */
   /* min-width (css)속성은 최소 높이를 설정한다.width 속성의 사용값이 자신의 값보다 작아지는 걸 방지한다. */
   /* min-width: calc(1000px); */
   /* 자식 요소가 padding에 의해 벗어나는 것을 방지한다. */
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   /* min-width (css)속성은 최소 너비를 설정한다.width 속성의 사용값이 자신의 값보다 작아지는 걸 방지한다. */
+}
+.mainSlideArea{
+  width: 1200px;
+  background: gray;
+  margin: 0px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
 }
 
 /* Footer component css */
@@ -213,10 +231,14 @@ tr, td {
 @media all and (min-width:768px) and (max-width:1023){
 
 }
-
+@media (max-width:1300px){
+  .mainSlideArea{
+    width: 700px;
+  }
+}
 /* 태블릿 기준 */
-@media all and (min-width:480px) and (max-width:767){
-  
+@media all and (min-width:480px) and (max-width:767px){
+
 }
 
 /* 모바일 기준 */
