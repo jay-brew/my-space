@@ -1,18 +1,19 @@
-import React from 'react'
+import React from 'react';
 
 const Popup = (props) => {
     const popupClose = () => {
         // 설정된 props를 통해 부모에 정의된 함수를 호출한다.
-        props.popupClose(true);
+        props.popupClose(true);        
     };
+    console.log("test",props.left)
   return (
     <div 
         style={
             {
                 position:"fixed",
-                left:100,
+                left:props.left,
                 right:0,
-                top:100,
+                top:props.top,
                 width:"300px",
                 height:"300px",
                 background:"white"

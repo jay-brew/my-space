@@ -7,7 +7,6 @@ const Login = () => {
   const [pw, setPw] = useState(''); // 비밀번호
   const idInput = useRef(); // id 객체생성 useRef();호출
   const pwInput = useRef(); // pw 객체생성 useRef();호출
-  const idPwFind = useRef("");
 
   const navigate = useNavigate();
 
@@ -67,7 +66,7 @@ const Login = () => {
           </div>
           <p>
             <label onClick={()=>{signupButton()}}>회원가입</label>
-            <label onClick={()=>{idPasswordFind()}} ref={idPwFind}>아이디/비밀번호 찾기</label>
+            <label onClick={()=>{idPasswordFind()}}>아이디/비밀번호 찾기</label>
           </p>
         </div>
       </div>
