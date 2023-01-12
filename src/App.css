@@ -3,9 +3,23 @@ body {
   font-family: "Georgia" !important;
 }
 
+.wrap{
+  display: flex;
+  width: 100%;
+  /* position 속성의 relative 설정은 요소를 원래 위치에서 벗어나게 배치할 수 있게 한다. */
+  position: relative;
+  /* footer 하단 고정 */
+  min-height: 100vh;
+}
+
 /* Login page css */
+.loginPage{
+  display: flex;
+  width: 100%;
+}
 .login{
-  display: flex; 
+  width: 100%;
+  display: flex;
   /* 가로 중앙 정렬 */
   justify-content: center; 
   /* 세로 중앙 정렬 */
@@ -50,6 +64,7 @@ body {
 /* Signup page css */
 .signup{
   display: flex; 
+  width:100%;
   /* 가로 중앙 정렬 */
   justify-content: center; 
   /* 세로 중앙 정렬 */
@@ -97,14 +112,6 @@ body {
   display: none;
 }
 
-.wrap{
-  display: flex;
-  width: 100%;
-  /* position 속성의 relative 설정은 요소를 원래 위치에서 벗어나게 배치할 수 있게 한다. */
-  position: relative;
-  /* footer 하단 고정 */
-  min-height: 100vh;
-}
 
 /* Header component css - 헤더(Menu Bar, bg img) */
 .header{

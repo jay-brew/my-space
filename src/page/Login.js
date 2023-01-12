@@ -57,7 +57,7 @@ const Login = () => {
   };
   
   return (
-    <div>
+    <div className='loginPage'>
       <div className='login'>
         <div className='loginForm'>
           <div>
